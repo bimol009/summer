@@ -1,195 +1,209 @@
-
-
-
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
-import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
-import useAuth from './../../hooks/useAuth';
-import { useForm } from 'react-hook-form';
+import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
-import { Helmet } from 'react-helmet-async';
-
-
+import { Helmet } from "react-helmet-async";
+import { FaEye } from "react-icons/fa";
+import { FaEyeSlash } from "react-icons/fa";
+import useAuth from "../../hooks/useAuth";
 
 const Register = () => {
-  const {createUserEmailPass,createdProfile} = useAuth()
-  const navigate = useNavigate()
+  const { createUserEmailPass, createdProfile } = useAuth();
+  const navigate = useNavigate();
   const {
     register,
     reset,
     handleSubmit,
     formState: { errors },
   } = useForm();
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const toggleConfirmPasswordVisibility = () => {
+    setShowConfirmPassword(!showConfirmPassword);
+  };
+
   const onSubmit = (data) => {
-
-    
-    createUserEmailPass(data.email,data.password)
-    .then(result=>{
-
+    createUserEmailPass(data.email, data.password).then((result) => {
       const loggeUser = result.user;
-      console.log(loggeUser)
+      console.log(loggeUser);
 
-      createdProfile(data.name,data.photoURL)
-      .then(()=>{
-        const savedUser = {name: data.name,email:data.email}
-        fetch('http://localhost:5000/users',{
-          method:'POST',
-          headers:{
-            'content-type':'application/json'
-          },
-          body:JSON.stringify(savedUser)
-          
-        })
-        .then(res=>res.json())
-        .then(data=>{
-          if(data.insertedId){
-            reset()
-            Swal.fire({
-              position: "top-end",
-              icon: "success",
-              title: "User Sign up Successfully",
-              showConfirmButton: false,
-              timer: 1500,
+      createdProfile(data.name, data.photoURL)
+        .then(() => {
+          const savedUser = { name: data.name, email: data.email,photoURL: data.photoURL };
+          fetch("http://localhost:5000/users", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(savedUser),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.insertedId) {
+                reset();
+                Swal.fire({
+                  position: "top-end",
+                  icon: "success",
+                  title: "User Sign up Successfully",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+                navigate("/");
+              }
             });
-            navigate('/')
-          }
         })
-       
-        
+        .catch((error) => {
+          console.log(error);
+        });
+    });
+    if (data.password !== data.confirm) {
+      Swal.fire({
+        icon: "error",
+        title: "Password Mismatch",
+        text: "The password and confirm password fields must match.",
+      });
+      return;
+    }
 
-       
-      })
-      .catch((error)=>{
-        console.log(error)
-      })
-    })
+    // Handle form submission here
   };
 
   return (
-    <div>
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <Helmet>
-        <title>SummerSchool | Register </title>
+        <title>Academy of dance | Register</title>
         <link rel="canonical" href="https://www.tacobell.com/" />
       </Helmet>
-      <div className="hero min-h-screen bg-base-200">
-        <div className="hero-content flex-col lg:flex-row-reverse">
-          <div className="text-center lg:text-left">
-            <h1 className="text-5xl font-bold">Login now!</h1>
-            <p className="py-6">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
-            </p>
+      <div className="max-w-md w-full mx-auto">
+        <h1 className="text-3xl font-bold text-center mb-6">Register now!</h1>
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="bg-white rounded shadow-md px-8 pt-6 pb-8 mb-4"
+        >
+          <div className="mb-4">
+            <label className="block text-gray-700 font-bold mb-2">
+              Your Name
+            </label>
+            <input
+              type="text"
+              name="name"
+              {...register("name", { required: true })}
+              placeholder="Name"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+            {errors.name && (
+              <p className="text-red-600">This Name field is required</p>
+            )}
           </div>
-          <form
-            onSubmit={handleSubmit(onSubmit)}
-            className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100"
-          >
-            <div className="card-body">
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Your Name</span>
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  {...register("name", { required: true })}
-                  placeholder="Name"
-                  className="input input-bordered"
-                />
-                {errors.name && (
-                  <span className="text-red-600">
-                    This Name field is required
-                  </span>
-                )}
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Photo Url</span>
-                </label>
-                <input
-                  type="text"
-                  name="photo"
-                  {...register("photoURL", { required: true })}
-                  placeholder="Photo Url"
-                  className="input input-bordered"
-                />
-                {errors.photoURL && (
-                  <span className="text-red-600">
-                    This Photo field is required
-                  </span>
-                )}
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Email</span>
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  {...register("email", { required: true })}
-                  placeholder="email"
-                  className="input input-bordered"
-                />
-                {errors.email && (
-                  <span className="text-red-600">
-                    This email field is required
-                  </span>
-                )}
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Password</span>
-                </label>
-                <input
-                  type="password"
-                  name="password"
-                  {...register("password", {
-                    required: true,
-                    pattern: /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]/,
-                    minLength: 6,
-                    maxLength: 20,
-                  })}
-                  placeholder="password"
-                  className="input input-bordered"
-                />
-                {errors.password?.type === "pattern" && (
-                  <p className="text-error">
-                    Minimum Six characters, at least one uppercase letter, one
-                    lowercase letter and one number
-                  </p>
-                )}
-                {errors.password?.type === "pattern" && (
-                  <p className="text-error">Password is required</p>
-                )}
-                {errors.password?.type === "minLength" && (
-                  <p className="text-error">Password is min 6 required</p>
-                )}
-                <label className="label">
-                  <a href="#" className="label-text-alt link link-hover">
-                    Forgot password?
-                  </a>
-                </label>
-                
-              </div>
-              <div className="form-control mt-6">
-                <button className="btn btn-primary">Register</button>
-              </div>
-              <p>
-                Already have an account?{" "}
-                <Link to="/login">
-                  <button className="btn btn-link">Please Login</button>
-                </Link>
-                
-                <button className="btn btn-primary" onClick={() => reset()}>
-                  Reset
-                </button>
-              </p>
-             <SocialLogin></SocialLogin>
+          <div className="mb-4">
+            <label className="block text-gray-700 font-bold mb-2">
+              Photo URL
+            </label>
+            <input
+              type="text"
+              name="photo"
+              {...register("photoURL", { required: true })}
+              placeholder="Photo URL"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+            {errors.photoURL && (
+              <p className="text-red-600">This Photo field is required</p>
+            )}
+          </div>
+          <div className="mb-4">
+            <label className="block text-gray-700 font-bold mb-2">Email</label>
+            <input
+              type="email"
+              name="email"
+              {...register("email", { required: true })}
+              placeholder="Email"
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            />
+            {errors.email && (
+              <p className="text-red-600">This email field is required</p>
+            )}
+          </div>
+          <div className="mb-4">
+            <label className="block text-gray-700 font-bold mb-2">
+              Password
+            </label>
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                name="password"
+                {...register("password", {
+                  required: true,
+                  pattern: /(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]/,
+                  minLength: 6,
+                  maxLength: 20,
+                })}
+                placeholder="Password"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              />
+              <button
+                type="button"
+                className="absolute top-0 right-0 mt-2 mr-2 text-sm text-gray-500 focus:outline-none"
+                onClick={togglePasswordVisibility}
+              >
+                {showPassword ? <FaEye /> : <FaEyeSlash />}
+              </button>
+              <label className="text-gray-700">Show Password</label>
             </div>
-            
-          </form>
-        </div>
+            {errors.password?.type === "pattern" && (
+              <p className="text-red-600">
+                Minimum six characters, at least one uppercase letter, one
+                lowercase letter, and one number
+              </p>
+            )}
+            {errors.password?.type === "minLength" && (
+              <p className="text-red-600">
+                Password is required and must be at least 6 characters long
+              </p>
+            )}
+          </div>
+          <div className="mb-4">
+            <label className="block text-gray-700 font-bold mb-2">
+              Confirm Password
+            </label>
+            <div className="relative">
+              <input
+                type={showConfirmPassword ? "text" : "password"}
+                name="confirm"
+                {...register("confirm", { required: true })}
+                placeholder="Confirm Password"
+                className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+              />
+              <button
+                type="button"
+                className="absolute top-0 right-0 mt-2 mr-2 text-sm text-gray-500 focus:outline-none"
+                onClick={toggleConfirmPasswordVisibility}
+              >
+                {showPassword ? <FaEye /> : <FaEyeSlash />}
+              </button>
+              <label className="text-gray-700">Show Password</label>
+            </div>
+          </div>
+          <div className="flex items-center justify-between mt-6">
+            <button
+              type="submit"
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            >
+              Register
+            </button>
+            <div>
+              Already have an account?
+              <Link to="/login" className="text-blue-500 hover:text-blue-700">
+                Login
+              </Link>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   );

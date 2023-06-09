@@ -5,6 +5,7 @@ import useAuth from "../../hooks/useAuth";
 
 const Navbar = () => {
   const { user, logOutEmail } = useAuth();
+  console.log(user)
 
   const handleLogOut = () => {
     logOutEmail()
@@ -15,31 +16,32 @@ const Navbar = () => {
   const navOptions = (
     <>
       <li>
-        <Link to="/menu">Instructor</Link>
+        <Link to="/allinstructors">Instructor</Link>
+      </li>
+      
+      <li>
+        <Link to="/all">Classes</Link>
       </li>
 
       <li>
         <Link to="/">Home</Link>
       </li>
 
-      <li>
-        <Link to="/order/salad">Classes</Link>
-      </li>
 
       {user?.email ? (
 
       
           <>
           <li>
-              <Link to="/order/salad">Dashboard</Link>
+              <Link to="">Dashboard</Link>
            </li>
     
             {user && (
               <img
                 className="profile-img h-[50px] w-[50px] rounded-full mr-2"
-                src={user.photoURL}
+                src={user?.photoURL}
                 alt=""
-                title={user.displayName}
+                title={user?.displayName}
               />
             )}
             {/* {user && <p className="text-white">{user.displayName}</p>} */}

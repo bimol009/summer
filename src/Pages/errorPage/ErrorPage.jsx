@@ -1,31 +1,28 @@
 import React from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import SectionTitle from '../../Components/SectionTile/SectionTitle';
-import './ErrorPage.css'
 
 const ErrorPage = () => {
-    const location = useLocation();
-    console.log(location)
+  const navHandler = () => {
+    window.history.back();
+  };
 
-   
-
-   
-
-    const navigate = useNavigate();
-    const navHandler =()=>{
-      navigate(-1)
-    }
-    return (
-        
-        <div className='grid justify-items-center border'>
-            <SectionTitle heading={"This Is Error Page"}></SectionTitle>
-            <img className='imgError
-            bg-gradient-to-r from-purple-300 to-pink-400' src="https://i.ibb.co/TLJC9cC/visuals-Jp-TY4g-Uvi-JM-unsplash.jpg" alt="" />
-            <div className='button'>
-            <button onClick={navHandler} className='btn btn-error text-3xl mt-5 mb-5 font-bold'>go to home</button>
-            </div>
-        </div>
-    );
+  return (
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+      <SectionTitle heading="This Is Error Page" />
+      <img
+        className="w-full h-auto max-w-lg rounded-lg shadow-lg mt-8"
+        src="https://i.ibb.co/TLJC9cC/visuals-Jp-TY4g-Uvi-JM-unsplash.jpg"
+        alt="Error"
+      />
+      <button
+        onClick={navHandler}
+        className="mt-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+      >
+        Go to Home
+      </button>
+    </div>
+  );
 };
 
 export default ErrorPage;
