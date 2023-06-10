@@ -1,5 +1,8 @@
 
 import SectionTitle from "../../Components/SectionTile/SectionTitle";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 const DanceSection = () => {
   const bestDancers = [
@@ -21,19 +24,24 @@ const DanceSection = () => {
     },
   ];
 
+  useEffect(() => {
+    AOS.init(); // Initialize AOS library
+  }, []);
+
   return (
+    <div>
     <div className="container mx-auto px-4 py-8">
-      
-      <SectionTitle
-        subHeading={"Loud Dancers"}
-        heading="Best Dancers"
-      ></SectionTitle>
+      <SectionTitle subHeading={"Loud Dancers"} heading="Best Dancers" />
       <h1 className="text-4xl font-bold text-center mb-8">
         Welcome to the Dance Academy!
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {bestDancers.map((bt) => (
-          <div key={bt.id} className="bg-white rounded-lg shadow-lg">
+          <div
+            key={bt.id}
+            data-aos="fade-right"
+            className="bg-white rounded-lg shadow-lg"
+          >
             <img
               src={bt.image}
               alt={bt.name}
@@ -48,6 +56,7 @@ const DanceSection = () => {
           </div>
         ))}
       </div>
+    </div>
     </div>
   );
 };

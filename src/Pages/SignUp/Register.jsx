@@ -6,6 +6,7 @@ import { Helmet } from "react-helmet-async";
 import { FaEye } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
+import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
 
 const Register = () => {
   const { createUserEmailPass, createdProfile } = useAuth();
@@ -204,6 +205,10 @@ const Register = () => {
             </div>
           </div>
         </form>
+        <div className="bg-white shadow-md rounded px-8 pt-6 pb-8 my-2">
+          <p className="text-center">Or login with:</p>
+          <SocialLogin />
+        </div>
       </div>
     </div>
   );

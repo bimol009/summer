@@ -22,6 +22,7 @@ const Navbar = () => {
       <li>
         <Link to="/all">Classes</Link>
       </li>
+      
 
       <li>
         <Link to="/">Home</Link>
@@ -33,8 +34,13 @@ const Navbar = () => {
       
           <>
           <li>
-              <Link to="">Dashboard</Link>
+              <Link to="/dash">Dashboard</Link>
            </li>
+          <li>
+              <Link to="/users">All Users</Link>
+           </li>
+
+          
     
             {user && (
               <img
@@ -48,7 +54,9 @@ const Navbar = () => {
      
             
             <button onClick={handleLogOut}>Logout</button>
+        
           </>
+          
       
       ) : (
         <li>

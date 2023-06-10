@@ -1,12 +1,18 @@
-import React from 'react';
+
+import { useQuery } from '@tanstack/react-query';
 import { Helmet } from 'react-helmet-async';
 import SectionTitle from '../../Components/SectionTile/SectionTitle';
-import useInstructor from '../../hooks/useInstructor';
-import Instructor from './../Home/Instructor/Instructor';
+import useAxiosSecure from '../../hooks/useAxiosSecure';
+
+
 
 
 const AllInstructorPage = () => {
-    const [instructor]= useInstructor()
+  const [axiosSecure] = useAxiosSecure();
+  const { data: instructor = [] } = useQuery(["instructor"], async () => {
+    const res = await axiosSecure.get("/instructor");
+    return res.data;
+  });
     return (
         <div>
           <Helmet>

@@ -1,18 +1,21 @@
 
 import { Helmet } from "react-helmet-async";
 import SectionTitle from "../../../Components/SectionTile/SectionTitle";
-import useInstructor from "../../../hooks/useInstructor";
+// import useInstructor from "../../../hooks/useInstructor";
+import { useEffect } from 'react';
+import { useState } from 'react';
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+
 
 const Instructor = () => {
-  const [instructor] = useInstructor();
+  // const [instructor] = useInstructor();
 
-//   useEffect(() => {
-//     fetch("instructor.json")
-//       .then((res) => res.json())
-//       .then((data) => {
-//         setInstructor(data);
-//       });
-//   }, []);
+  const [axiosSecure] = useAxiosSecure();
+  const { data: instructor = [] } = useQuery(["instructor"], async () => {
+    const res = await axiosSecure.get("/instructor");
+    return res.data;
+  });
 
   return (
     <div>
@@ -21,7 +24,7 @@ const Instructor = () => {
         <link rel="canonical" href="https://www.tacobell.com/" />
       </Helmet>
       <SectionTitle
-        subHeading={"Instructor Section"}
+        subHeading={"Popular Instructor Section"}
         heading={"Instructor"}
       ></SectionTitle>
 

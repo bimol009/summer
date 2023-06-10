@@ -6,6 +6,10 @@ import Login from "../Pages/Login/Login";
 import Register from "./../Pages/SignUp/Register";
 import AllInstructorPage from './../Pages/AllInstructorPage/AllInstructorPage';
 import AllClasses from "../Pages/AllClasses/AllClasses";
+import AllUsers from "../Pages/AllUsers/AllUsers";
+import Dashboard from "../Layout/Dashboard";
+
+// import AllUsers from "../Pages/AllUsers/AllUsers";
 
 
 
@@ -13,7 +17,7 @@ import AllClasses from "../Pages/AllClasses/AllClasses";
 const router = createBrowserRouter([
   {
     path: "/",
-    errorElement: <ErrorPage></ErrorPage>,
+    // errorElement: <ErrorPage></ErrorPage>,
     element: <Main></Main>,
     children: [
       {
@@ -24,6 +28,14 @@ const router = createBrowserRouter([
       {
         path:'all',
         element:<AllClasses/>
+      },
+      {
+        path:'users',
+        element:<AllUsers/>
+      },
+      {
+        path:'/dash',
+        element:<Dashboard/>
       },
 
       {

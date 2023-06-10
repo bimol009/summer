@@ -24,10 +24,11 @@ const AllClasses = () => {
          <div key={ins._id} className="bg-white rounded-lg shadow-md overflow-hidden">
          <img className="w-full h-48 object-cover object-center" src={ins.picture} alt="Card Image" />
          <div className="p-6">
-           <h2 className="text-2xl font-bold text-gray-800 mb-4">{ins.name}</h2>
+           <h2 className="text-2xl font-bold text-gray-800 mb-4">Name: {ins.name}</h2>
            <p className="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consequat erat vitae libero tristique ullamcorper.</p>
-           <p className="text-3xl">{ins.category}</p>
-           
+           <p className="text-3xl">Category: {ins.category}</p>
+           <p className="text-3xl">Price: {ins.price}</p>
+           <button className="btn btn-primary my-2">Enroll</button>
          </div>
        </div>
        

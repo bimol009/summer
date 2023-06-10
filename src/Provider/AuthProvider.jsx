@@ -1,5 +1,6 @@
 
 
+import axios from "axios";
 import {
   createUserWithEmailAndPassword,
   getAuth,
@@ -79,20 +80,20 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubsCribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      //get and set token
-      // if (currentUser) {
-      //   axios
-      //     .post("http://localhost:5000/jwt", { email: currentUser.email })
+      // get and set token
+      if (currentUser) {
+        axios
+          .post("http://localhost:5000/jwt", { email: currentUser.email })
 
-      //     .then((data) => {
+          .then((data) => {
         
-      //       localStorage.setItem('access-token',data.data.token)
-      //       setLoading(false);
-      //     });
-      // }
-      // else{
-      //   localStorage.removeItem('access-token')
-      // }
+            localStorage.setItem('access-token',data.data.token)
+            setLoading(false);
+          });
+      }
+      else{
+        localStorage.removeItem('access-token')
+      }
 
       
     });
