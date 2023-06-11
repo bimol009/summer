@@ -15,7 +15,7 @@ const AllUsers = () => {
   });
 
   const [showChangeRole, setShowChangeRole] = useState(false);
-  const [adminClicked, setAdminClicked] = useState(false);
+
 
   const handleRoleChange = (user, updatedRole) => {
     if (isAdmin) {
@@ -67,7 +67,7 @@ const AllUsers = () => {
   };
 
   const roleToggleButton = (user) => {
-    if (isAdmin && showChangeRole && !adminClicked) {
+    if (isAdmin && showChangeRole ) {
       const roles = ["admin", "student", "instructor"];
       const currentRole = user?.role || "";
 
@@ -79,8 +79,8 @@ const AllUsers = () => {
               onClick={() => handleRoleChange(user, role)}
               className={`${
                 currentRole === role
-                  ? "bg-blue-600 text-white"
-                  : "bg-gray-300 text-gray-700"
+                  ? "btn btn-success text-white font-bold"
+                  : "bg-gray-300 text-gray-700 font-bold"
               } mx-1 px-4 py-2 rounded-md`}
               disabled={currentRole === "admin"}
             >
@@ -92,15 +92,15 @@ const AllUsers = () => {
     }
   };
 
-  // const handleAdminToggle = () => {
-  //   setAdminClicked(!adminClicked);
-  // };
+
 
   return (
     <div>
+      <button className="btn btn-outline"><h2>When you are admin other 2 button is disable</h2></button>
       <h2>All Users {users?.length}</h2>
       <div className="overflow-x-auto">
         <table className="table table-zebra">
+          
           <thead>
             <tr>
               <th>#</th>
@@ -109,6 +109,7 @@ const AllUsers = () => {
               <th>Role</th>
               {isAdmin && <th>Change Role</th>}
               {isAdmin && <th>Action</th>}
+              
             </tr>
           </thead>
           <tbody>
@@ -124,10 +125,10 @@ const AllUsers = () => {
                   {isAdmin && (
                     <button
                       onClick={() => setShowChangeRole(!showChangeRole)}
-                      className="btn btn-ghost btn-md bg-blue-600 text-white"
-                      disabled={adminClicked}
+                      className="btn btn-outline  font-bold "
+                  
                     >
-                      {showChangeRole ? "Hide Roles" : "Change Role"}
+                      {showChangeRole ? "Hide Roles" : "Role Change"}
                     </button>
                   )}
                   {roleToggleButton(user)}
