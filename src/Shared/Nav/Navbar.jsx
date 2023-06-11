@@ -34,11 +34,9 @@ const Navbar = () => {
       
           <>
           <li>
-              <Link to="/dash">Dashboard</Link>
+              <Link to="/dashboard">Dashboard</Link>
            </li>
-          <li>
-              <Link to="/users">All Users</Link>
-           </li>
+         
 
           
     
