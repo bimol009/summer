@@ -118,7 +118,7 @@ const CheckOutForm = ({ cart, price }) => {
             type="submit"
             disabled={!stripe || !clientSecret || processing}
           >
-            Pay
+            Payment
           </button>
         </form>
         {cardError && <p className="checkout-error">{cardError}</p>}
