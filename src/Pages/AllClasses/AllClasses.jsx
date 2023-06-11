@@ -1,21 +1,71 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Helmet } from "react-helmet-async";
+import {  useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import SectionTitle from "../../Components/SectionTile/SectionTitle";
 import UseMenu from "../../hooks/UseMenu";
+import useAuth from "./../../hooks/useAuth";
 
 const AllClasses = () => {
   const [menu] = UseMenu();
-  console.log(menu)
-  const [enrolledClasses, setEnrolledClasses] = useState([]);
+  const { user } = useAuth();
+  const Navigate = useNavigate();
+  console.log(menu);
 
-  const handleEnroll = (classId) => {
-    // Perform payment process and backend API call to enroll in the class
-    // On successful payment and enrollment, update the enrolledClasses state
+  const [enrollStatus, setEnrollStatus] = useState({}); 
 
-    // Example code for demonstration purposes
-    // Simulate a successful payment and enrollment
-    const enrolledClass = menu.find((ins) => ins._id === classId);
-    setEnrolledClasses([...enrolledClasses, enrolledClass]);
+  const handleEnroll = (item) => {
+    console.log(item);
+    if (user && user.email) {
+      const menuItem = {
+        itemId: item._id,
+        name: item.name,
+        image: item.picture,
+        price: item.price,
+        category: item.category,
+        email: user.email,
+        instructor: item.instructor,
+        seat: item.available_seats
+      };
+
+      fetch("http://localhost:5000/carts", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(menuItem),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.insertedId) {
+            Swal.fire({
+              position: "top-end",
+              icon: "success",
+              title: "Successfully Added to the cart",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            setEnrollStatus((prevState) => ({
+              ...prevState,
+              [item._id]: true,
+            }));
+          }
+        });
+    } else {
+      Swal.fire({
+        title: "Please Login",
+        text: "You are about to delete this class",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, Login Now!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Navigate("/login");
+        }
+      });
+    }
   };
 
   return (
@@ -51,25 +101,14 @@ const AllClasses = () => {
               <p className="text-3xl">Price: {ins.price}</p>
               <button
                 className="btn btn-primary my-2"
-                onClick={() => handleEnroll(ins._id)}
+                onClick={() => handleEnroll(ins)}
+                disabled={enrollStatus[ins._id]} 
               >
-                Enroll
+                {enrollStatus[ins._id] ? "Pending" : "Enroll"}
               </button>
             </div>
           </div>
         ))}
-      </div>
-      <div>
-        <h2>Enrolled Classes:</h2>
-        {enrolledClasses.length > 0 ? (
-          <ul>
-            {enrolledClasses.map((classItem) => (
-              <li key={classItem._id}>{classItem.name}</li>
-            ))}
-          </ul>
-        ) : (
-          <p>No classes enrolled yet.</p>
-        )}
       </div>
     </div>
   );

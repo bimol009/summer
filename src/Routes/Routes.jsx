@@ -13,11 +13,15 @@ import PrivateRoutes from "./PrivateRoutes/PrivateRoutes";
 import AdminRoutes from "./AdminRoutes";
 import UserHome from "../Pages/DashBoard/UserHome/UserHome";
 import AdminHome from "../Pages/DashBoard/AdminHome/AdminHome";
+import MySelectedClasses from "../Pages/DashBoard/MySelectedClasses/MySelectedClasses";
+import EnrollClass from "../Pages/DashBoard/EnrollClass/EnrollClass";
+import MyCart from "../Pages/DashBoard/MyCart/MyCart";
+import Payment from "../Pages/DashBoard/Payment/Payment";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    // errorElement: <ErrorPage></ErrorPage>,
+    errorElement: <ErrorPage></ErrorPage>,
     element: <Main></Main>,
     children: [
       {
@@ -56,6 +60,22 @@ const router = createBrowserRouter([
       {
         path:"userhome",
         element:<UserHome></UserHome>
+      },
+      {
+        path:"mycart",
+        element:<MyCart></MyCart>
+      },
+      {
+        path: "payment",
+        element: <Payment></Payment>,
+      },
+      {
+        path:"selectclass",
+        element:<MySelectedClasses></MySelectedClasses>
+      },
+      {
+        path:"enrollclass",
+        element:<EnrollClass></EnrollClass>
       },
       //Admin home
       {

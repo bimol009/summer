@@ -88,12 +88,12 @@ const AuthProvider = ({ children }) => {
 
           .then((data) => {
         
-            localStorage.setItem('access-token',data.data.token)
+            localStorage.setItem('access-token',data.data.token);
             setLoading(false);
           });
       }
       else{
-        localStorage.removeItem('access-token')
+        localStorage.removeItem('access-token');
       }
 
       setLoading(false);

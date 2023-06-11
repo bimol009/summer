@@ -63,6 +63,12 @@ const Dashboard = () => {
                 <NavLink to="/dashboard/userhome">
                   <FaHome /> User Home
                 </NavLink>
+                <NavLink to="/dashboard/selectclass">
+                  <FaHome /> <h2>Selected Class</h2>
+                </NavLink>
+                <NavLink to="/dashboard/enrollclass">
+                  <FaHome /> My Enroll
+                </NavLink>
               </li>
               {/* Additional menu items for regular users */}
               <li>
