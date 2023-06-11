@@ -79,6 +79,7 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const unsubsCribe = onAuthStateChanged(auth, (currentUser) => {
+      console.log(currentUser)
       setUser(currentUser);
       // get and set token
       if (currentUser) {
@@ -95,13 +96,13 @@ const AuthProvider = ({ children }) => {
         localStorage.removeItem('access-token')
       }
 
-      
+      setLoading(false);
     });
     // stop unmount observe
     return () => {
-      unsubsCribe();
+      return unsubsCribe();
     };
-  }, [reload]);
+  }, []);
 
   const authInfo = {
     user,

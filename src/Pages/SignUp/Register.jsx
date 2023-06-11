@@ -9,7 +9,7 @@ import useAuth from "../../hooks/useAuth";
 import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
 
 const Register = () => {
-  const { createUserEmailPass, createdProfile } = useAuth();
+  const { createUserEmailPass,createdProfile } = useAuth();
   const navigate = useNavigate();
   const {
     register,

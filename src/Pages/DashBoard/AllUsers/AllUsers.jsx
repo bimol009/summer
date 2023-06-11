@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
@@ -7,7 +7,7 @@ import useAdmin from "../../../hooks/useAdmin";
 
 const AllUsers = () => {
   const [axiosSecure] = useAxiosSecure();
-  const [isAdmin] = useAdmin(); // Add the isAdmin hook
+  const [isAdmin] = useAdmin();
   const { data: users = [], refetch } = useQuery(["users"], async () => {
     const res = await axiosSecure.get("/users");
     console.log(res);
@@ -15,6 +15,7 @@ const AllUsers = () => {
   });
 
   const [showChangeRole, setShowChangeRole] = useState(false);
+  const [adminClicked, setAdminClicked] = useState(false);
 
   const handleRoleChange = (user, updatedRole) => {
     if (isAdmin) {
@@ -65,23 +66,35 @@ const AllUsers = () => {
     }
   };
 
-  const roleToggoleButton = (user) => {
-    if (isAdmin && showChangeRole) {
-      const updatedRole = user.role === "admin" ? "instructor" : "admin";
+  const roleToggleButton = (user) => {
+    if (isAdmin && showChangeRole && !adminClicked) {
+      const roles = ["admin", "student", "instructor"];
+      const currentRole = user?.role || "";
+
       return (
-        <button
-          onClick={() => handleRoleChange(user, updatedRole)}
-          className={`btn btn-ghost btn-md ${
-            user.role === "admin"
-              ? "bg-orange-500 text-white"
-              : "bg-gray-500 text-gray-300"
-          }`}
-        >
-          {updatedRole}
-        </button>
+        <div className="flex justify-center">
+          {roles.map((role) => (
+            <button
+              key={role}
+              onClick={() => handleRoleChange(user, role)}
+              className={`${
+                currentRole === role
+                  ? "bg-blue-600 text-white"
+                  : "bg-gray-300 text-gray-700"
+              } mx-1 px-4 py-2 rounded-md`}
+              disabled={currentRole === "admin"}
+            >
+              {role}
+            </button>
+          ))}
+        </div>
       );
     }
   };
+
+  // const handleAdminToggle = () => {
+  //   setAdminClicked(!adminClicked);
+  // };
 
   return (
     <div>
@@ -92,10 +105,10 @@ const AllUsers = () => {
             <tr>
               <th>#</th>
               <th>Name</th>
-              <th>EMAIL</th>
+              <th>Email</th>
               <th>Role</th>
               {isAdmin && <th>Change Role</th>}
-              {isAdmin && <th>ACTION</th>}
+              {isAdmin && <th>Action</th>}
             </tr>
           </thead>
           <tbody>
@@ -105,18 +118,19 @@ const AllUsers = () => {
                 <td>{user.name}</td>
                 <td>{user.email}</td>
                 <td>
-                  {user?.role.charAt(0).toUpperCase() + user?.role.slice(1)}
+                  {user?.role?.charAt(0).toUpperCase() + user?.role?.slice(1)}
                 </td>
                 <td>
                   {isAdmin && (
                     <button
                       onClick={() => setShowChangeRole(!showChangeRole)}
                       className="btn btn-ghost btn-md bg-blue-600 text-white"
+                      disabled={adminClicked}
                     >
-                      Change Role
+                      {showChangeRole ? "Hide Roles" : "Change Role"}
                     </button>
                   )}
-                  {roleToggoleButton(user)}
+                  {roleToggleButton(user)}
                 </td>
                 <td>
                   {isAdmin && (
@@ -134,6 +148,7 @@ const AllUsers = () => {
           </tbody>
         </table>
       </div>
+   
     </div>
   );
 };

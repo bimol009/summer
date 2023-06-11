@@ -5,6 +5,7 @@ import UseMenu from "../../hooks/UseMenu";
 
 const AllClasses = () => {
   const [menu] = UseMenu();
+  console.log(menu)
   const [enrolledClasses, setEnrolledClasses] = useState([]);
 
   const handleEnroll = (classId) => {
