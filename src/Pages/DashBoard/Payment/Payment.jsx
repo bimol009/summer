@@ -1,39 +1,27 @@
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import { ElementsConsumer } from "@stripe/react-stripe-js";
+import { useParams } from "react-router-dom";
 import SectionTitle from "../../../Components/SectionTile/SectionTitle";
 import useCart from "../../../hooks/useCart";
-import CheckOutForm from "./CheckOutForm";
+import CheckOutForm from "./CheckOutform";
 
 const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_Verify);
-import { useState } from 'react';
-
 const Payment = () => {
   const [cart] = useCart();
-  const [selectedItemPrice, setSelectedItemPrice] = useState(0); // State to store the selected item price
 
-  // Function to handle the enroll button click
-  const handleEnroll = (price) => {
-    setSelectedItemPrice(price);
-  };
-
+  const { id } = useParams();
+  const selectedClass = cart?.find((oneCart) => oneCart._id === id);
+  const price = selectedClass ? selectedClass.price : 0;
+  // const price = selectedClass.price
+  console.log("paymnet",price)
+  console.log("after payment",id,selectedClass);
+  // const total = cart.reduce((sum, item) => sum + item.price, 0);
+  // const price = parseFloat(total.toFixed(2));
   return (
     <div className="w-full">
       <SectionTitle heading={"PAYMENT"} />
-
-      {/* Render the cart items and provide a way to enroll */}
-      <div className="cart-items">
-        {cart.map((item, index) => (
-          <div key={index} className="cart-item">
-            <h3>{item.name}</h3>
-            <p>Price: {item.price}</p>
-            <button onClick={() => handleEnroll(item.price)}>Enroll</button>
-          </div>
-        ))}
-      </div>
-
       <Elements stripe={stripePromise}>
-        <CheckOutForm cart={cart} price={selectedItemPrice}></CheckOutForm>
+        <CheckOutForm cart={selectedClass} price={price} id={id}></CheckOutForm>
       </Elements>
     </div>
   );

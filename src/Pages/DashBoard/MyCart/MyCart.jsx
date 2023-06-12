@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { FaTrashAlt } from "react-icons/fa";
+import useCart from "../../../hooks/useCart";
+import  Swal  from 'sweetalert2';
+import { FaTrashAlt } from 'react-icons/fa';
 import { Link } from "react-router-dom";
-import Swal from "sweetalert2";
-import useCart from "./../../../hooks/useCart";
+
 
 const MyCart = () => {
   const [cart, refetch] = useCart();
@@ -87,9 +87,11 @@ const MyCart = () => {
                   </button>
                 </th>
                 <th>
-                  <Link to="/dashboard/payment"><button className="btn btn-warning" onClick={handleEnroll}>
+                  <Link to={`/dashboard/payment/${item._id}`}>
+                  <button className="btn btn-warning" onClick={handleEnroll}>
                     Enroll
-                  </button></Link>
+                  </button>
+                  </Link>
                 </th>
                 <th>
                   <button

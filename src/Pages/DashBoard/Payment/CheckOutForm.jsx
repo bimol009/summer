@@ -1,10 +1,11 @@
-import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import { useEffect, useState } from 'react';
-import useAuth from '../../../hooks/useAuth';
-import useAxiosSecure from '../../../hooks/useAxiosSecure';
-import './CheckOutForm.css';
+import { useStripe, CardElement, useElements } from "@stripe/react-stripe-js";
+import { useState } from "react";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { useEffect } from "react";
+import useAuth from "../../../hooks/useAuth";
+import "./CheckOutForm.css";
 
-const CheckOutForm = ({ cart, price }) => {
+const CheckOutForm = ({ cart, price,id }) => {
   const stripe = useStripe();
   const elements = useElements();
   const { user } = useAuth();
@@ -16,12 +17,12 @@ const CheckOutForm = ({ cart, price }) => {
 
   useEffect(() => {
     if (price > 0) {
-      axiosSecure.post("/create-payment-intent", { price }).then((res) => {
+      axiosSecure.post(`/create-payment-intent/${id}`, { price }).then((res) => {
         console.log(res.data.clientSecret);
         setClientSecret(res.data.clientSecret);
       });
     }
-  }, []);
+  }, [axiosSecure, id, price]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -40,7 +41,6 @@ const CheckOutForm = ({ cart, price }) => {
       type: "card",
       card,
     });
-
     if (error) {
       console.log("[error]", error);
       setCardError(error.message);
@@ -73,62 +73,61 @@ const CheckOutForm = ({ cart, price }) => {
           email: user?.email,
           transactionId: paymentIntent.id,
           price,
+         
           date: new Date(),
-          orderStatus: 'Service Pending',
+          ordeStutas: "Service Pending",
           quantity: cart.length,
-          cartItems: cart.map(item => item._id),
-          menuItems: cart.map(item => item.menuItemId),
-          itemNames: cart.map(item => item.name)
+          cartItems: id,
+          name:cart.name,
+          // menuItems: cart.map((item) => item.itemId),
+          // itemNames: cart.map((item) => item.name),
         };
-        axiosSecure.post('/payments', payment)
-          .then(res => {
-            console.log(res.data);
-            if (res.data.result.insertedId) {
-              // Show success message or redirect
-            }
-          });
+        axiosSecure.post(`/payments/${id}`, payment).then((res) => {
+          console.log(res.data);
+          if (res.data.result.insertedId) {
+            <h2>swet alert</h2>;
+          }
+        });
       }
     }
   };
 
   return (
-    <div className="checkout-container">
-      <div className="checkout-card">
-        <form className="checkout-form" onSubmit={handleSubmit}>
-          <div className="card-element">
-            <CardElement
-              options={{
-                style: {
-                  base: {
-                    fontSize: "16px",
-                    color: "#424770",
-                    "::placeholder": {
-                      color: "#aab7c4",
-                    },
-                  },
-                  invalid: {
-                    color: "#9e2146",
-                  },
+    <div>
+      <form className="w-2/3 mx-auto" onSubmit={handleSubmit}>
+        <CardElement
+          options={{
+            style: {
+              base: {
+                fontSize: "16px",
+                color: "#424770",
+                "::placeholder": {
+                  color: "#aab7c4",
                 },
-              }}
-            />
-          </div>
-          <button
-            className="checkout-button"
-            type="submit"
-            disabled={!stripe || !clientSecret || processing}
-          >
-            Payment
-          </button>
-        </form>
-        {cardError && <p className="checkout-error">{cardError}</p>}
-        {transactionId && (
-          <p className="checkout-success">
-            Success with transaction Id:{" "}
-            <span className="checkout-success-id">{transactionId}</span>
-          </p>
-        )}
-      </div>
+              },
+              invalid: {
+                color: "#9e2146",
+              },
+            },
+          }}
+        />
+        <button
+          className="btn btn-outline btn-primary btn-sm my-2"
+          type="submit"
+          disabled={!stripe || !clientSecret || processing}
+        >
+          Pay
+        </button>
+      </form>
+
+      {cardError && <p className="text-error ml-28 my-5">{cardError}</p>}
+
+      {transactionId && (
+        <p className="text-primary ml-28 my-5">
+          Success with transaction Id:{" "}
+          <span className="font-bold">{transactionId}</span>
+        </p>
+      )}
     </div>
   );
 };

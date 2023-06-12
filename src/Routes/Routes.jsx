@@ -13,10 +13,12 @@ import PrivateRoutes from "./PrivateRoutes/PrivateRoutes";
 import AdminRoutes from "./AdminRoutes";
 import UserHome from "../Pages/DashBoard/UserHome/UserHome";
 import AdminHome from "../Pages/DashBoard/AdminHome/AdminHome";
-import MySelectedClasses from "../Pages/DashBoard/MySelectedClasses/MySelectedClasses";
 import EnrollClass from "../Pages/DashBoard/EnrollClass/EnrollClass";
 import MyCart from "../Pages/DashBoard/MyCart/MyCart";
-import Payment from "../Pages/DashBoard/Payment/Payment";
+import Payment from './../Pages/DashBoard/Payment/Payment';
+import UpdateClass from "../Pages/DashBoard/UpdateClass/UpdateClass";
+import InstructorRoutes from "./InstructorRoutes";
+
 
 const router = createBrowserRouter([
   {
@@ -62,21 +64,15 @@ const router = createBrowserRouter([
         element:<UserHome></UserHome>
       },
       {
-        path:"mycart",
+        path:"selectclass",
         element:<MyCart></MyCart>
       },
       {
-        path: "payment",
+        path: "payment/:id",
         element: <Payment></Payment>,
       },
-      {
-        path:"selectclass",
-        element:<MySelectedClasses></MySelectedClasses>
-      },
-      {
-        path:"enrollclass",
-        element:<EnrollClass></EnrollClass>
-      },
+    
+     
       //Admin home
       {
         path: "users",
@@ -86,7 +82,15 @@ const router = createBrowserRouter([
         path: "adminhome",
         element: <AdminRoutes><AdminHome/></AdminRoutes>,
       },
-     
+     //instructor routes
+     {
+      path:"update",
+      element:<InstructorRoutes><UpdateClass></UpdateClass></InstructorRoutes>
+     },
+     {
+      path:"enrollclass",
+      element:<InstructorRoutes><EnrollClass></EnrollClass></InstructorRoutes>
+    }
       
     ],
   },

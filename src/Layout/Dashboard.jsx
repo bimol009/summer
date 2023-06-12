@@ -9,12 +9,11 @@ const Dashboard = () => {
   const [isAdmin] = useAdmin();
   const [isInstructor] = useInstructor();
 
-
   return (
     <div className="drawer lg:drawer-open py-20">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col items-center justify-center">
-       <Outlet/>
+        <Outlet />
         <label
           htmlFor="my-drawer-2"
           className="btn btn-primary drawer-button lg:hidden"
@@ -32,7 +31,7 @@ const Dashboard = () => {
                   <FaHome /> ADMIN HOME
                 </NavLink>
               </li>
-              {/* Additional menu items for admin */}
+
               <li>
                 <NavLink to="/dashboard/history">MANAGE BOOKINGS</NavLink>
               </li>
@@ -46,6 +45,12 @@ const Dashboard = () => {
                 <NavLink to="/dashboard/userhome">
                   <FaHome /> User Instructor
                 </NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/enrollclass">My Enroll</NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/update">Update A Item</NavLink>
               </li>
               {/* Additional menu items for instructors */}
               <li>
@@ -66,11 +71,8 @@ const Dashboard = () => {
                 <NavLink to="/dashboard/selectclass">
                   <FaHome /> <h2>Selected Class</h2>
                 </NavLink>
-                <NavLink to="/dashboard/enrollclass">
-                  <FaHome /> My Enroll
-                </NavLink>
               </li>
-              {/* Additional menu items for regular users */}
+
               <li>
                 <NavLink to="">
                   <FaWallet /> Payment History
