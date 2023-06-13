@@ -46,9 +46,7 @@ const Dashboard = () => {
                   <FaHome /> User Instructor
                 </NavLink>
               </li>
-              <li>
-                <NavLink to="/dashboard/enrollclass">My Enroll</NavLink>
-              </li>
+
               <li>
                 <NavLink to="/dashboard/update">Update A Item</NavLink>
               </li>
@@ -68,9 +66,15 @@ const Dashboard = () => {
                 <NavLink to="/dashboard/userhome">
                   <FaHome /> User Home
                 </NavLink>
+              </li>
+              <li>
                 <NavLink to="/dashboard/selectclass">
                   <FaHome /> <h2>Selected Class</h2>
                 </NavLink>
+              </li>
+
+              <li>
+                <NavLink to="/dashboard/enrollclass">My Enroll</NavLink>
               </li>
 
               <li>

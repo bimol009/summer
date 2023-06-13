@@ -59,6 +59,7 @@ const router = createBrowserRouter([
    
     ),
     children: [
+      //user er route
       {
         path:"userhome",
         element:<UserHome></UserHome>
@@ -70,6 +71,10 @@ const router = createBrowserRouter([
       {
         path: "payment/:id",
         element: <Payment></Payment>,
+      },
+      {
+        path:"enrollclass",
+        element:<EnrollClass></EnrollClass>
       },
     
      
@@ -87,10 +92,7 @@ const router = createBrowserRouter([
       path:"update",
       element:<InstructorRoutes><UpdateClass></UpdateClass></InstructorRoutes>
      },
-     {
-      path:"enrollclass",
-      element:<InstructorRoutes><EnrollClass></EnrollClass></InstructorRoutes>
-    }
+     
       
     ],
   },
