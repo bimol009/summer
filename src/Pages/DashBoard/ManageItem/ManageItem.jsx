@@ -3,10 +3,46 @@ import Swal from "sweetalert2";
 import UseMenu from "../../../hooks/UseMenu";
 import useMenuItem from "../../../hooks/useMenuItem";
 import { FaTrashAlt } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const ManageItem = () => {
   const [menuItem, loading, refetch] = useMenuItem();
+
+  const {id} = useParams()
+
+  //   const handleAccept = (item) => {
+  //     fetch(`http://localhost:5000/menu/${item._id}`, {
+  //       method: "POST",
+  //       headers: {
+  //         "content-type": "application/json",
+  //       },
+  //       body: JSON.stringify(item),
+  //     })
+  //       .then((res) => res.json())
+  //       .then((data) => {
+  //         console.log(data);
+  //         refetch();
+  //         Swal.fire("Accepted!", "Your file has been Accepted.", "success");
+  //       });
+  //   };
+
+  const handleAccept = (item) => {
+    fetch(`http://localhost:5000/menuItem/${item._id}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(item),
+    })
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.insertedId>0) {
+        refetch();
+        Swal.fire("Deleted!", "Your file has been deleted.", "success");
+      }
+    });
+  };
+  
 
   const handleDeleteOne = (item) => {
     Swal.fire({
@@ -90,25 +126,25 @@ const ManageItem = () => {
               </td>
               <td>
                 <Link to={`/dashboard/updateclass/${item._id}`}>
-                <button
-                //   onClick={() => handleUpdate(item)}
-                  className="btn btn-ghost btn-md bg-red-600 text-white"
-                >
-               Update
-                </button>
+                  <button
+                    //   onClick={() => handleUpdate(item)}
+                    className="btn btn-ghost btn-md bg-red-600 text-white"
+                  >
+                    Update
+                  </button>
                 </Link>
               </td>
               <td>
                 <button
-                //   onClick={() => handleAccept(item)}
+                  onClick={() => handleAccept(item)}
                   className="btn btn-ghost btn-md bg-red-600 text-white"
                 >
-                 Accept
+                  Accept
                 </button>
               </td>
               <td>
                 <button
-                //   onClick={() => handleFeedback(item)}
+                  //   onClick={() => handleFeedback(item)}
                   className="btn btn-ghost btn-md bg-red-600 text-white"
                 >
                   <FaTrashAlt />

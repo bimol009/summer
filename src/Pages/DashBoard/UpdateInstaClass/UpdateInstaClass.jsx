@@ -150,7 +150,7 @@ const UpdateInstaClass = () => {
             type="file"
             className="file-input file-input-bordered w-full max-w-xs"
             placeholder="Class Image"
-            {...register('image', { required: true })}
+            {...register('image', )}
           />
           {errors.image && <span className="text-red-500">This field is required</span>}
         </div>
