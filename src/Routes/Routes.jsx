@@ -18,6 +18,8 @@ import MyCart from "../Pages/DashBoard/MyCart/MyCart";
 import Payment from './../Pages/DashBoard/Payment/Payment';
 import UpdateClass from "../Pages/DashBoard/UpdateClass/UpdateClass";
 import InstructorRoutes from "./InstructorRoutes";
+import PaymentDetails from "../Pages/DashBoard/PaymnetHistory/PaymentDetails";
+
 
 
 const router = createBrowserRouter([
@@ -75,6 +77,10 @@ const router = createBrowserRouter([
       {
         path:"enrollclass",
         element:<EnrollClass></EnrollClass>
+      },
+      {
+        path:"details",
+        element:<PaymentDetails></PaymentDetails>
       },
     
      

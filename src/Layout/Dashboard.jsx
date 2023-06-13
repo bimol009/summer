@@ -72,13 +72,14 @@ const Dashboard = () => {
                   <FaHome /> <h2>Selected Class</h2>
                 </NavLink>
               </li>
-
+            
+              
               <li>
                 <NavLink to="/dashboard/enrollclass">My Enroll</NavLink>
               </li>
 
               <li>
-                <NavLink to="">
+                <NavLink to="/dashboard/details">
                   <FaWallet /> Payment History
                 </NavLink>
               </li>
