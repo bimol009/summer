@@ -19,6 +19,8 @@ import Payment from './../Pages/DashBoard/Payment/Payment';
 import UpdateClass from "../Pages/DashBoard/UpdateClass/UpdateClass";
 import InstructorRoutes from "./InstructorRoutes";
 import PaymentDetails from "../Pages/DashBoard/PaymnetHistory/PaymentDetails";
+import ManageItem from "../Pages/DashBoard/ManageItem/ManageItem";
+import UpdateInstaClass from "../Pages/DashBoard/UpdateInstaClass/UpdateInstaClass";
 
 
 
@@ -89,13 +91,22 @@ const router = createBrowserRouter([
         path: "users",
         element: <AdminRoutes><AllUsers /></AdminRoutes>,
       },
+    
+      {
+        path: "manage",
+        element: <ManageItem />,
+      },
+      {
+        path: "updateclass/:id",
+        element: <UpdateInstaClass />,
+      },
       {
         path: "adminhome",
         element: <AdminRoutes><AdminHome/></AdminRoutes>,
       },
      //instructor routes
      {
-      path:"update",
+      path:"addclass",
       element:<InstructorRoutes><UpdateClass></UpdateClass></InstructorRoutes>
      },
      

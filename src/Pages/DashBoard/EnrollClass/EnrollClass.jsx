@@ -77,7 +77,7 @@ const EnrollClass = () => {
                     {insta.price}
                   </span>
                 </td>
-                <td>Purple</td>
+           
                 <button
                     onClick={() => handleDeleteOne(insta)}
                     className="btn btn-ghost btn-md bg-red-600 text-white"

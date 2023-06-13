@@ -33,17 +33,18 @@ const UpdateClass = () => {
      
         if (imgFind.success) {
           const imgUrl = imgFind.data.display_url;
-          const { name,price } = data;
+          const { name,price,available_seats } = data;
           
           const menuChange = {
             name:name,
             instructor:user?.displayName,
             picture: imgUrl,
             email:user?.email,
+            available_seats:available_seats,
             price: parseFloat(price),
           };
      
-          axiosSecure.post("/menu", menuChange).then((data) => {
+          axiosSecure.post("/menuItem", menuChange).then((data) => {
          
             if(data.data.insertedId){
                 reset()
@@ -130,7 +131,7 @@ const UpdateClass = () => {
             <input
               type="number"
               placeholder="Available Seat"
-              {...register("seat", { required: true })}
+              {...register("available_seats", { required: true })}
               className="input input-bordered w-full "
             />
           </div>

@@ -38,6 +38,7 @@ const Dashboard = () => {
               <li>
                 <NavLink to="/dashboard/users">ALL USERS</NavLink>
               </li>
+            
             </>
           ) : isInstructor ? (
             <>
@@ -48,7 +49,7 @@ const Dashboard = () => {
               </li>
 
               <li>
-                <NavLink to="/dashboard/update">Update A Item</NavLink>
+                <NavLink to="/dashboard/addclass">Update A Item</NavLink>
               </li>
               {/* Additional menu items for instructors */}
               <li>
