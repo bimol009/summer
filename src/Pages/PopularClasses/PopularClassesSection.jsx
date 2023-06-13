@@ -24,7 +24,7 @@ const PopularClassesSection = () => {
         seat: item.available_seats,
       };
 
-      console.log(item);
+   
 
       fetch("http://localhost:5000/carts", {
         method: "POST",
@@ -50,7 +50,7 @@ const PopularClassesSection = () => {
           }
         })
         .catch((error) => {
-          console.error("Error:", error);
+       
           Swal.fire({
             icon: "error",
             title: "Oops...",

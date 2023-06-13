@@ -32,7 +32,7 @@ const Register = () => {
   const onSubmit = (data) => {
     createUserEmailPass(data.email, data.password).then((result) => {
       const loggeUser = result.user;
-      console.log(loggeUser);
+ 
 
       createdProfile(data.name, data.photoURL)
         .then(() => {
@@ -60,7 +60,7 @@ const Register = () => {
             });
         })
         .catch((error) => {
-          console.log(error);
+    
         });
     });
     if (data.password !== data.confirm) {

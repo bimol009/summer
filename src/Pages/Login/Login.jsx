@@ -22,11 +22,11 @@ const Login = () => {
 
   const handleLogin = (data) => {
     const { email, password } = data;
-    console.log(email, password);
+  
     signIn(email, password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
+     
         Swal.fire({
           position: "top-end",
           icon: "success",
@@ -37,7 +37,7 @@ const Login = () => {
         navigate("/");
       })
       .catch((error) => {
-        console.log(error);
+    
         Swal.fire({
           position: "top-end",
           icon: "error",

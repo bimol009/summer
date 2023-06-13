@@ -10,7 +10,7 @@ const useInstaFind = () => {
         queryKey: ["instaFind"],
         queryFn: async () => {
           const res = await fetch("http://localhost:5000/payment");
-          console.log(res)
+   
           return res.json();
         },
       });

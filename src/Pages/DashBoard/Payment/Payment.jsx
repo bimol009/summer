@@ -12,11 +12,7 @@ const Payment = () => {
   const { id } = useParams();
   const selectedClass = cart?.find((oneCart) => oneCart._id === id);
   const price = selectedClass ? selectedClass.price : 0;
-  // const price = selectedClass.price
-  console.log("paymnet",price)
-  console.log("after payment",id,selectedClass);
-  // const total = cart.reduce((sum, item) => sum + item.price, 0);
-  // const price = parseFloat(total.toFixed(2));
+
   return (
     <div className="w-full">
       <SectionTitle heading={"PAYMENT"} />

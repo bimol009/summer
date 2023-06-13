@@ -14,7 +14,7 @@ const SocialLogin = () => {
   const handleLogGoogle = () => {
     googleSignEmailPass().then((result) => {
       const loggedUser = result.user;
-      console.log(loggedUser);
+
       const savedUser = {
         name: loggedUser.displayName,
         email: loggedUser.email,

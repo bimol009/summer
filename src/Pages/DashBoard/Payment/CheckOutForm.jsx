@@ -18,7 +18,7 @@ const CheckOutForm = ({ cart, price,id }) => {
   useEffect(() => {
     if (price > 0) {
       axiosSecure.post(`/create-payment-intent/${id}`, { price }).then((res) => {
-        console.log(res.data.clientSecret);
+
         setClientSecret(res.data.clientSecret);
       });
     }
@@ -42,7 +42,7 @@ const CheckOutForm = ({ cart, price,id }) => {
       card,
     });
     if (error) {
-      console.log("[error]", error);
+
       setCardError(error.message);
     } else {
       setCardError("");
@@ -64,7 +64,7 @@ const CheckOutForm = ({ cart, price,id }) => {
     if (paymentError) {
       console.log(paymentError);
     } else {
-      console.log("paymentIntent",paymentIntent);
+
       setProcessing(false);
       if (paymentIntent.status === "succeeded") {
         const transactionId = paymentIntent.id;
@@ -83,7 +83,7 @@ const CheckOutForm = ({ cart, price,id }) => {
           // itemNames: cart.map((item) => item.name),
         };
         axiosSecure.post(`/payments/${id}`, payment).then((res) => {
-          console.log(res.data);
+   
           if (res.data.result.insertedId) {
             <h2>swet alert</h2>;
           }
