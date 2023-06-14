@@ -43,9 +43,9 @@ const EnrollClass = () => {
                 #
               </th>
               <th>Name</th>
-              <th>Job</th>
-              <th>Favorite Color</th>
-              <th></th>
+              <th>Price</th>
+              <th>Delete</th>
+         
             </tr>
           </thead>
           <tbody>

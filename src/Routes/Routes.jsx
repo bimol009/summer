@@ -94,11 +94,11 @@ const router = createBrowserRouter([
     
       {
         path: "manage",
-        element: <ManageItem />,
+        element: <AdminRoutes><ManageItem /></AdminRoutes>,
       },
       {
         path: "updateclass/:id",
-        element: <UpdateInstaClass />,
+        element: <PrivateRoutes><UpdateInstaClass /></PrivateRoutes>,
       },
       {
         path: "adminhome",

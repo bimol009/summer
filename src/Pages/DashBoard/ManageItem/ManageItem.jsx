@@ -36,7 +36,8 @@ const ManageItem = () => {
     })
     .then((res) => res.json())
     .then((data) => {
-      if (data.insertedId>0) {
+        console.log(data)
+      if (data.result.insertedId) {
         refetch();
         Swal.fire("Deleted!", "Your file has been deleted.", "success");
       }

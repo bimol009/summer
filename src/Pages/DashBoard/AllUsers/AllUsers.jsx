@@ -10,7 +10,7 @@ const AllUsers = () => {
   const [isAdmin] = useAdmin();
   const { data: users = [], refetch } = useQuery(["users"], async () => {
     const res = await axiosSecure.get("/users");
-    console.log(res);
+
     return res.data;
   });
 

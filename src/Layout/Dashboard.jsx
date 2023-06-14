@@ -33,7 +33,7 @@ const Dashboard = () => {
               </li>
 
               <li>
-                <NavLink to="/dashboard/history">MANAGE BOOKINGS</NavLink>
+                <NavLink to="/dashboard/manage">Manage Classes</NavLink>
               </li>
               <li>
                 <NavLink to="/dashboard/users">ALL USERS</NavLink>
@@ -51,15 +51,8 @@ const Dashboard = () => {
               <li>
                 <NavLink to="/dashboard/addclass">Update A Item</NavLink>
               </li>
-              {/* Additional menu items for instructors */}
-              <li>
-                {/* <NavLink to="/dashboard/mycart">
-                  <FaShoppingCart /> My Cart
-                  <span className="badge badge-secondary">
-                    {cart?.length} || 0
-                  </span>
-                </NavLink> */}
-              </li>
+            
+            
             </>
           ) : (
             <>
