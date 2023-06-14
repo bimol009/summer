@@ -11,6 +11,10 @@ const Dashboard = () => {
 
   return (
     <div className="drawer lg:drawer-open py-20">
+       <Helmet>
+          <title>Academy of Dance | Dashboard</title>
+          <link rel="canonical" href="https://www.tacobell.com/" />
+        </Helmet>
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col items-center justify-center">
         <Outlet />

@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import useInstaFind from "./../../../hooks/useInstaFind";
@@ -16,9 +17,12 @@ const EnrollClass = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://summer-camp-server-bimol009.vercel.app/payment/${item._id}`, {
-          method: "DELETE",
-        })
+        fetch(
+          `https://summer-camp-server-bimol009.vercel.app/payment/${item._id}`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.json())
           .then((data) => {
             if (data.deletedCount > 0) {
@@ -32,29 +36,27 @@ const EnrollClass = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Academy of Dance | All Enroll</title>
+        <link rel="canonical" href="https://www.tacobell.com/" />
+      </Helmet>
       <h2>enroll class</h2>
 
       <div className="overflow-x-auto">
         <table className="table">
-       
           <thead>
             <tr>
-              <th>
-                #
-              </th>
+              <th>#</th>
               <th>Name</th>
               <th>Price</th>
               <th>Delete</th>
-         
             </tr>
           </thead>
           <tbody>
             {/* row 1 */}
-            {instaFind.map((insta,index) => (
+            {instaFind.map((insta, index) => (
               <tr key={insta._id}>
-                <th>
-                  {index+1}
-                </th>
+                <th>{index + 1}</th>
                 <td>
                   <div className="flex items-center space-x-3">
                     <div className="avatar">
@@ -67,23 +69,21 @@ const EnrollClass = () => {
                     </div>
                     <div>
                       <div className="font-bold">{insta.name}</div>
-                      
                     </div>
                   </div>
                 </td>
                 <td>
-           
                   <span className="badge badge-ghost badge-sm">
                     {insta.price}
                   </span>
                 </td>
-           
+
                 <button
-                    onClick={() => handleDeleteOne(insta)}
-                    className="btn btn-ghost btn-md bg-red-600 text-white"
-                  >
-                    <FaTrashAlt />
-                  </button>
+                  onClick={() => handleDeleteOne(insta)}
+                  className="btn btn-ghost btn-md bg-red-600 text-white"
+                >
+                  <FaTrashAlt />
+                </button>
               </tr>
             ))}
           </tbody>

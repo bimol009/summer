@@ -5,7 +5,10 @@ import PopularClassesSection from "../../PopularClasses/PopularClassesSection";
 import Banner from "../Banner/Banner";
 import Instructor from "./../Instructor/Instructor";
 
+
+
 const Home = () => {
+  
   return (
     <div>
       <Banner></Banner>

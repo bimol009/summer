@@ -1,5 +1,6 @@
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import { Helmet } from "react-helmet-async";
 import { useParams } from "react-router-dom";
 import SectionTitle from "../../../Components/SectionTile/SectionTitle";
 import useCart from "../../../hooks/useCart";
@@ -15,6 +16,10 @@ const Payment = () => {
 
   return (
     <div className="w-full">
+       <Helmet>
+          <title>Academy of Dance | Payment</title>
+          <link rel="canonical" href="https://www.tacobell.com/" />
+        </Helmet>
       <SectionTitle heading={"PAYMENT"} />
       <Elements stripe={stripePromise}>
         <CheckOutForm cart={selectedClass} price={price} id={id}></CheckOutForm>

@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import SectionTitle from '../../../Components/SectionTile/SectionTitle';
 import useAuth from '../../../hooks/useAuth';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import { Helmet } from 'react-helmet-async';
 
 const UpdateInstaClass = () => {
   const [axiosSecure] = useAxiosSecure();
@@ -73,6 +74,10 @@ const UpdateInstaClass = () => {
 
   return (
     <div className="w-full px-4">
+       <Helmet>
+          <title>Academy of Dance | Update</title>
+          <link rel="canonical" href="https://www.tacobell.com/" />
+        </Helmet>
       <div>
         <SectionTitle heading={'Update Class'}></SectionTitle>
       </div>

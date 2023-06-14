@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import useInstaFind from "../../../hooks/useInstaFind";
 
 const PaymentDetails = () => {
@@ -11,6 +12,10 @@ const PaymentDetails = () => {
 
   return (
     <div>
+       <Helmet>
+          <title>Academy of Dance | History</title>
+          <link rel="canonical" href="https://www.tacobell.com/" />
+        </Helmet>
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}

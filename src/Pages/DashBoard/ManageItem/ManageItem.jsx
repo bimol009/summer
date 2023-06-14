@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import useMenuItem from "../../../hooks/useMenuItem";
 import { FaTrashAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const ManageItem = () => {
   const [menuItem, loading, refetch] = useMenuItem();
@@ -61,6 +62,10 @@ const ManageItem = () => {
 
   return (
     <div className="overflow-x-auto">
+       <Helmet>
+          <title>Academy of Dance | Manage Item</title>
+          <link rel="canonical" href="https://www.tacobell.com/" />
+        </Helmet>
       <table className="table">
         {/* head */}
         <thead>

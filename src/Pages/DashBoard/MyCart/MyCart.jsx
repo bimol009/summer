@@ -2,6 +2,7 @@ import useCart from "../../../hooks/useCart";
 import  Swal  from 'sweetalert2';
 import { FaTrashAlt } from 'react-icons/fa';
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 
 const MyCart = () => {
@@ -40,6 +41,10 @@ const MyCart = () => {
 
   return (
     <div>
+       <Helmet>
+          <title>Academy of Dance | My Cart</title>
+          <link rel="canonical" href="https://www.tacobell.com/" />
+        </Helmet>
       <div className="uppercase flex font-semibold justify-evenly p-5">
         <h2 className="text-3xl">Total Items: {cart.length}</h2>
         <h2 className="text-3xl">Total price: ${sum}</h2>
