@@ -1,7 +1,7 @@
 [
   {
-    "_id": "1",
-    "price": "$860.56",
+    
+    "price": 89,
     "picture": "https://i.ibb.co/0Gp6cP6/danielle-cerullo-3ck-WUna-Cxzc-unsplash.jpg",
     "name": "Mccarty Chen",
     "category": "hiphop",
@@ -11,8 +11,8 @@
     "available_seats": 10
   },
   {
-    "_id": "2",
-    "price": "$1,151.31",
+    
+    "price": 66,
     "picture": "https://i.ibb.co/1Mt7n48/michael-afonso-z8-Tul255k-Gg-unsplash.jpg",
     "name": "Wall Herring",
     "category": "rock",
@@ -22,8 +22,8 @@
     "available_seats": 8
   },
   {
-    "_id": "3",
-    "price": "$978.40",
+    
+    "price": 80,
     "picture": "https://i.ibb.co/zxYqzZZ/rainier-ridao-GRDp-Pp-Kczd-Y-unsplash.jpg",
     "name": "Dickson Boyle",
     "category": "belly",
@@ -34,8 +34,8 @@
   },
 
   {
-    "_id": "4",
-    "price": "$1,169.74",
+    
+    "price": 120,
     "picture": "https://i.ibb.co/vcZk4BL/aditya-ali-Sz-I4-No8r-Q14-unsplash.jpg",
     "name": "Jeannette Arnold",
     "category": "jazz",
@@ -45,8 +45,8 @@
     "available_seats": 15
   },
   {
-    "_id": "5",
-    "price": "$1,020.76",
+    
+    "price": 200,
     "picture": "https://i.ibb.co/TrLSyb9/ahmad-odeh-KHipn-Bn7sd-Y-unsplash.jpg",
     "name": "Rena Benton",
     "category": "break",
@@ -56,8 +56,8 @@
     "available_seats": 7
   },
   {
-    "_id": "6",
-    "price": "$1,076.06",
+    
+    "price": 220,
     "picture": "https://i.ibb.co/0Gp6cP6/danielle-cerullo-3ck-WUna-Cxzc-unsplash.jpg",
     "name": "Allie Bernard",
     "category": "rock",
@@ -67,8 +67,8 @@
     "available_seats": 10
   },
   {
-    "_id": "7",
-    "price": "$1,025.65",
+    
+    "price": 300,
     "picture": "https://i.ibb.co/1Mt7n48/michael-afonso-z8-Tul255k-Gg-unsplash.jpg",
     "name": "Leila Cline",
     "category": "hiphop",
@@ -78,8 +78,8 @@
     "available_seats": 5
   },
   {
-    "_id": "8",
-    "price": "$729.54",
+    
+    "price": 226,
     "picture": "https://i.ibb.co/zxYqzZZ/rainier-ridao-GRDp-Pp-Kczd-Y-unsplash.jpg",
     "name": "Aimee Waters",
     "category": "belly",
@@ -89,8 +89,8 @@
     "available_seats": 12
   },
   {
-    "_id": "9",
-    "price": "$938.48",
+    
+    "price": 160,
     "picture": "https://i.ibb.co/0Gp6cP6/danielle-cerullo-3ck-WUna-Cxzc-unsplash.jpg",
     "name": "Maldonado Mcknight",
     "category": "belly",
@@ -100,8 +100,8 @@
     "available_seats": 8
   },
   {
-    "_id": "10",
-    "price": "$1,031.68",
+    
+    "price": 90,
     "picture": "https://i.ibb.co/vcZk4BL/aditya-ali-Sz-I4-No8r-Q14-unsplash.jpg",
     "name": "Marshall Hamilton",
     "category": "jazz",
@@ -112,8 +112,8 @@
   },
 
   {
-    "_id": "11",
-    "price": "$854.32",
+    
+    "price": 99,
     "picture": "https://i.ibb.co/TrLSyb9/ahmad-odeh-KHipn-Bn7sd-Y-unsplash.jpg",
     "name": "Samantha Phillips",
     "category": "contemporary",
@@ -123,8 +123,8 @@
     "available_seats": 15
   },
   {
-    "_id": "12",
-    "price": "$925.45",
+    
+    "price": 199,
     "picture": "https://i.ibb.co/1Mt7n48/michael-afonso-z8-Tul255k-Gg-unsplash.jpg",
     "name": "Gregory Ruiz",
     "category": "hiphop",
@@ -134,8 +134,8 @@
     "available_seats": 8
   },
   {
-    "_id": "13",
-    "price": "$1,110.23",
+    
+    "price":290,
     "picture": "https://i.ibb.co/0Gp6cP6/danielle-cerullo-3ck-WUna-Cxzc-unsplash.jpg",
     "name": "Melissa Reed",
     "category": "rock",
@@ -145,8 +145,8 @@
     "available_seats": 12
   },
   {
-    "_id": "14",
-    "price": "$762.89",
+    
+    "price": 160,
     "picture": "https://i.ibb.co/zxYqzZZ/rainier-ridao-GRDp-Pp-Kczd-Y-unsplash.jpg",
     "name": "Brandon Miller",
     "category": "belly",
@@ -156,8 +156,8 @@
     "available_seats": 10
   },
   {
-    "_id": "15",
-    "price": "$965.32",
+    
+    "price": 30,
     "picture": "https://i.ibb.co/vcZk4BL/aditya-ali-Sz-I4-No8r-Q14-unsplash.jpg",
     "name": "Jacob Freeman",
     "category": "jazz",
@@ -168,8 +168,8 @@
   },
 
   {
-    "_id": "16",
-    "price": "$780.00",
+    
+    "price": 140,
     "picture": "https://i.ibb.co/c2mhBYY/Untitled.jpg",
     "name": "Emily Martinez",
     "category": "salsa",
@@ -179,8 +179,8 @@
     "available_seats": 20
   },
   {
-    "_id": "17",
-    "price": "$650.50",
+    
+    "price": 195,
     "picture": "https://i.ibb.co/pnQvkVF/Untitled1.jpg",
     "name": "Sophia Davis",
     "category": "ballet",
@@ -190,8 +190,8 @@
     "available_seats": 15
   },
   {
-    "_id": "18",
-    "price": "$550.75",
+    
+    "price": 145,
     "picture": "https://i.ibb.co/c2mhBYY/Untitled.jpg",
     "name": "Ethan Wilson",
     "category": "tap",
@@ -201,8 +201,8 @@
     "available_seats": 12
   },
   {
-    "_id": "19",
-    "price": "$700.20",
+    
+    "price": 166,
     "picture": "https://i.ibb.co/pnQvkVF/Untitled1.jpg",
     "name": "Liam Thompson",
     "category": "flamenco",
@@ -212,8 +212,8 @@
     "available_seats": 10
   },
   {
-    "_id": "20",
-    "price": "$900.99",
+    
+    "price": 155,
     "picture": "https://i.ibb.co/3fzV0sQ/Untitled3.jpg",
     "name": "Aiden Clark",
     "category": "ballroom",
@@ -222,4 +222,5 @@
     "instructor": "Lucas Anderson",
     "available_seats": 8
   }
+ 
 ]

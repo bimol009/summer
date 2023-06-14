@@ -1,14 +1,13 @@
-import React from "react";
+
 import Swal from "sweetalert2";
-import UseMenu from "../../../hooks/UseMenu";
+
 import useMenuItem from "../../../hooks/useMenuItem";
 import { FaTrashAlt } from "react-icons/fa";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const ManageItem = () => {
   const [menuItem, loading, refetch] = useMenuItem();
 
-  const {id} = useParams()
 
   
 
@@ -46,7 +45,7 @@ const ManageItem = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://summer-camp-server-bimol009.vercel.appp/menuItem/${item._id}`, {
+        fetch(`https://summer-camp-server-bimol009.vercel.app/menuItem/${item._id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
