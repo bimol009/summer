@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 import useInstaFind from "./../../../hooks/useInstaFind";
 
 const EnrollClass = () => {
-  const [instaFind, loading, refetch] = useInstaFind();
+  const [instaFind, refetch] = useInstaFind();
   const handleDeleteOne = (item) => {
     Swal.fire({
       title: "Are you sure?",
@@ -16,7 +16,7 @@ const EnrollClass = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/payment/${item._id}`, {
+        fetch(`https://summer-camp-server-bimol009.vercel.app/payment/${item._id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

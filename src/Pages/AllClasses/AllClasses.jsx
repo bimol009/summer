@@ -25,9 +25,9 @@ const AllClasses = () => {
         seat: item.available_seats,
       };
 
-      console.log(item)
 
-      fetch("http://localhost:5000/carts", {
+
+      fetch("https://summer-camp-server-bimol009.vercel.app/carts", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -51,7 +51,7 @@ const AllClasses = () => {
           }
         })
         .catch((error) => {
-          console.error("Error:", error);
+     
           Swal.fire({
             icon: "error",
             title: "Oops...",

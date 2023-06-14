@@ -9,12 +9,12 @@ const useInstaFind = () => {
       } = useQuery({
         queryKey: ["instaFind"],
         queryFn: async () => {
-          const res = await fetch("http://localhost:5000/payment");
+          const res = await fetch("https://summer-camp-server-bimol009.vercel.app/payment");
    
           return res.json();
         },
       });
-      return [instaFind, loading, refetch];
+      return [instaFind,refetch, loading ];
 };
 
 export default useInstaFind;

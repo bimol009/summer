@@ -16,7 +16,7 @@ const useInstructor = () => {
         enabled:!loading&&!!user?.email && !!localStorage.getItem('access-token'),
         queryFn: async()=>{
             const res = await axiosSecure.get(`/users/instructor/${user?.email}`) 
-            console.log(res)
+     
             return res.data.instructor;
         }
     })

@@ -1,8 +1,7 @@
-
 import { FaGoogle } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
 
-import useAuth from './../../hooks/useAuth';
+import useAuth from "./../../hooks/useAuth";
 
 const SocialLogin = () => {
   const navigate = useNavigate();
@@ -19,7 +18,7 @@ const SocialLogin = () => {
         name: loggedUser.displayName,
         email: loggedUser.email,
       };
-      fetch("http://localhost:5000/users", {
+      fetch("https://summer-camp-server-bimol009.vercel.app/users", {
         method: "POST",
         headers: {
           "content-type": "application/json",

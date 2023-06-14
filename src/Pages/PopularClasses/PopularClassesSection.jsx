@@ -26,7 +26,7 @@ const PopularClassesSection = () => {
 
    
 
-      fetch("http://localhost:5000/carts", {
+      fetch("https://summer-camp-server-bimol009.vercel.app/carts", {
         method: "POST",
         headers: {
           "content-type": "application/json",

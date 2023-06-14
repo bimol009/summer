@@ -10,24 +10,10 @@ const ManageItem = () => {
 
   const {id} = useParams()
 
-  //   const handleAccept = (item) => {
-  //     fetch(`http://localhost:5000/menu/${item._id}`, {
-  //       method: "POST",
-  //       headers: {
-  //         "content-type": "application/json",
-  //       },
-  //       body: JSON.stringify(item),
-  //     })
-  //       .then((res) => res.json())
-  //       .then((data) => {
-  //         console.log(data);
-  //         refetch();
-  //         Swal.fire("Accepted!", "Your file has been Accepted.", "success");
-  //       });
-  //   };
+  
 
   const handleAccept = (item) => {
-    fetch(`http://localhost:5000/menuItem/${item._id}`, {
+    fetch(`https://summer-camp-server-bimol009.vercel.app/menuItem/${item._id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -37,9 +23,13 @@ const ManageItem = () => {
     .then((res) => res.json())
     .then((data) => {
         console.log(data)
-      if (data.result.insertedId) {
+        if (data.deletedCount > 0) {
+          refetch();
+          Swal.fire("Deleted!", "Your file has been deleted.", "success");
+        }
+     else if (data.result.insertedId) {
         refetch();
-        Swal.fire("Deleted!", "Your file has been deleted.", "success");
+        Swal.fire("inserted Fire!", "Your file has been deleted.", "success");
       }
     });
   };
@@ -56,7 +46,7 @@ const ManageItem = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/menuItem/${item._id}`, {
+        fetch(`https://summer-camp-server-bimol009.vercel.appp/menuItem/${item._id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
