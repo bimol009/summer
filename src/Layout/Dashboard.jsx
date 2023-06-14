@@ -4,6 +4,7 @@ import { FaWallet, FaCalendarAlt, FaHome } from "react-icons/fa";
 import { Helmet } from "react-helmet-async";
 import useAdmin from "../hooks/useAdmin";
 import useInstructor from "../hooks/useInstructor";
+import { Fade } from "react-awesome-reveal";
 
 const Dashboard = () => {
   const [isAdmin] = useAdmin();
@@ -11,10 +12,10 @@ const Dashboard = () => {
 
   return (
     <div className="drawer lg:drawer-open py-20">
-       <Helmet>
-          <title>Academy of Dance | Dashboard</title>
-          <link rel="canonical" href="https://www.tacobell.com/" />
-        </Helmet>
+      <Helmet>
+        <title>Academy of Dance | Dashboard</title>
+        <link rel="canonical" href="https://www.tacobell.com/" />
+      </Helmet>
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col items-center justify-center">
         <Outlet />
@@ -30,11 +31,13 @@ const Dashboard = () => {
         <ul className="menu p-4 w-80 h-full text-base-content bg-[#dad3c8]">
           {isAdmin ? (
             <>
-              <li>
-                <NavLink to="/dashboard/adminhome">
-                  <FaHome /> ADMIN HOME
-                </NavLink>
-              </li>
+              <Fade cascade>
+                <li>
+                  <NavLink to="/dashboard/adminhome">
+                    <FaHome /> ADMIN HOME
+                  </NavLink>
+                </li>
+              </Fade>
 
               <li>
                 <NavLink to="/dashboard/manage">Manage Classes</NavLink>
@@ -42,7 +45,6 @@ const Dashboard = () => {
               <li>
                 <NavLink to="/dashboard/users">ALL USERS</NavLink>
               </li>
-            
             </>
           ) : isInstructor ? (
             <>
@@ -55,37 +57,44 @@ const Dashboard = () => {
               <li>
                 <NavLink to="/dashboard/addclass">Update A Item</NavLink>
               </li>
-            
-            
             </>
           ) : (
             <>
-              <li>
-                <NavLink to="/dashboard/userhome">
-                  <FaHome /> User Home
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/dashboard/selectclass">
-                  <FaHome /> <h2>Selected Class</h2>
-                </NavLink>
-              </li>
-            
-              
-              <li>
-                <NavLink to="/dashboard/enrollclass">My Enroll</NavLink>
-              </li>
-
-              <li>
-                <NavLink to="/dashboard/details">
-                  <FaWallet /> Payment History
-                </NavLink>
-              </li>
+              <Fade cascade>
+                {" "}
+                <li>
+                  <NavLink to="/dashboard/userhome">
+                    <FaHome /> User Home
+                  </NavLink>
+                </li>
+              </Fade>
+              <Fade damping>
+                {" "}
+                <li>
+                  <NavLink to="/dashboard/selectclass">
+                    <FaHome /> <h2>Selected Class</h2>
+                  </NavLink>
+                </li>
+              </Fade>
+              <Fade damping>
+                <li>
+                  <NavLink to="/dashboard/enrollclass">My Enroll</NavLink>
+                </li>
+              </Fade>
+              <Fade damping>
+                {" "}
+                <li>
+                  <NavLink to="/dashboard/details">
+                    <FaWallet /> Payment History
+                  </NavLink>
+                </li>
+              </Fade>
             </>
           )}
 
           {/* Common menu items */}
           <div className="divider"></div>
+          <Fade cascade>
           <li>
             <NavLink to="/">
               <FaHome /> Home
@@ -97,6 +106,7 @@ const Dashboard = () => {
           <li>
             <NavLink>Order</NavLink>
           </li>
+          </Fade>
         </ul>
       </div>
     </div>
