@@ -18,7 +18,7 @@ const EnrollClass = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         fetch(
-          `https://summer-camp-server-bimol009.vercel.app/payment/${item._id}`,
+          `http://localhost:5000/payment/${item._id}`,
           {
             method: "DELETE",
           }

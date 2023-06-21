@@ -6,6 +6,7 @@ import useAuth from "../../../hooks/useAuth";
 import "./CheckOutForm.css";
 
 const CheckOutForm = ({ cart, price,id }) => {
+  const {_id,itemId} = cart || {};
   const stripe = useStripe();
   const elements = useElements();
   const { user } = useAuth();
@@ -76,9 +77,10 @@ const CheckOutForm = ({ cart, price,id }) => {
          
           date: new Date(),
           ordeStutas: "Service Pending",
-          quantity: cart.length,
+          quantity: cart?.length,
           cartItems: id,
-          name:cart.name,
+          class:itemId,
+          name:cart?.name,
           // menuItems: cart.map((item) => item.itemId),
           // itemNames: cart.map((item) => item.name),
         };

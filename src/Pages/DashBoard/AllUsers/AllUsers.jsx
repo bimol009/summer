@@ -19,7 +19,7 @@ const AllUsers = () => {
 
   const handleRoleChange = (user, updatedRole) => {
     if (isAdmin) {
-      fetch(`https://summer-camp-server-bimol009.vercel.app/users/${updatedRole}/${user._id}`, {
+      fetch(`http://localhost:5000/users/${updatedRole}/${user._id}`, {
         method: "PATCH",
       })
         .then((res) => res.json())
@@ -51,7 +51,7 @@ const AllUsers = () => {
         confirmButtonText: "Yes, delete it!",
       }).then((result) => {
         if (result.isConfirmed) {
-          fetch(`https://summer-camp-server-bimol009.vercel.app/users/admin/${user._id}`, {
+          fetch(`http://localhost:5000/users/admin/${user._id}`, {
             method: "DELETE",
           })
             .then((res) => res.json())

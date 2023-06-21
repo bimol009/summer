@@ -19,15 +19,14 @@ const AllClasses = () => {
         email: user.email,
         name: item.name,
         price: item.price,
-        image:item.picture,
+        image: item.picture,
         category: item.category,
         instructor: item.instructor,
         seat: item.available_seats,
+        enStu: item.enrolledStudent
       };
 
-
-
-      fetch("https://summer-camp-server-bimol009.vercel.app/carts", {
+      fetch("http://localhost:5000/carts", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -51,7 +50,6 @@ const AllClasses = () => {
           }
         })
         .catch((error) => {
-     
           Swal.fire({
             icon: "error",
             title: "Oops...",
@@ -89,8 +87,8 @@ const AllClasses = () => {
         {menu.map((ins) => (
           <div
             key={ins._id}
-            className={`bg-white rounded-lg shadow-md overflow-hidden ${
-              ins.available_seats === 0 ? "bg-red-500" : ""
+            className={` rounded-lg shadow-md overflow-hidden ${
+              ins.available_seats === 0 ? "bg-red-500" : "bg-white"
             }`}
           >
             <img
@@ -108,10 +106,11 @@ const AllClasses = () => {
               </p>
               <p className="text-3xl">Category: {ins.category}</p>
               <p className="text-3xl">Price: {ins.price}</p>
+              <p className="text-3xl">seat: {ins.available_seats}</p>
+              <p className="text-3xl">enroll: {ins.enrolledStudent}</p>
               <button
                 className="btn btn-primary my-2"
                 onClick={() => handleEnroll(ins)}
-                
                 disabled={enrollStatus[ins._id] || ins.available_seats === 0}
               >
                 {enrollStatus[ins._id] ? "Pending" : "Enroll"}

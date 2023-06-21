@@ -10,6 +10,7 @@ const PopularClassesSection = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
   const [enrollStatus, setEnrollStatus] = useState({});
+  menu?.sort((a, b) => b.enrolledStudent - a.enrolledStudent)
 
   const handleEnroll = (item) => {
     if (user && user.email) {
@@ -22,11 +23,12 @@ const PopularClassesSection = () => {
         category: item.category,
         instructor: item.instructor,
         seat: item.available_seats,
+        enStu: item.enrolledStudent
       };
 
-   
+      
 
-      fetch("https://summer-camp-server-bimol009.vercel.app/carts", {
+      fetch("http://localhost:5000/carts", {
         method: "POST",
         headers: {
           "content-type": "application/json",
@@ -102,6 +104,7 @@ const PopularClassesSection = () => {
               </p>
               <p className="text-3xl">Category: {ins.category}</p>
               <p className="text-3xl">Price: {ins.price}</p>
+              <p className="text-3xl">enroll: {ins.enrolledStudent}</p>
               <button
                 className="btn btn-primary my-2"
                 onClick={() => handleEnroll(ins)}

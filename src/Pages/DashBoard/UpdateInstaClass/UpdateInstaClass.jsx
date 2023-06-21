@@ -12,6 +12,7 @@ const UpdateInstaClass = () => {
   const [axiosSecure] = useAxiosSecure();
   const { user } = useAuth();
   const { id } = useParams();
+  console.log(id)
 
   const { data: item = {}, refetch } = useQuery({
     queryKey: ['menuItem', id],
@@ -50,8 +51,9 @@ const UpdateInstaClass = () => {
           instructor: user?.displayName,
           picture: imgUrl,
           email: user?.email,
-          available_seats: parseFloat(available_seats),
+          available_seats: parseInt(available_seats),
           price: parseFloat(price),
+          enrolledStudent: 0
         };
 
         const response = await axiosSecure.patch(`/menuItem/${id}`, menuChange);

@@ -9,7 +9,7 @@ const useMenuItem = () => {
       } = useQuery({
         queryKey: ["menuitem"],
         queryFn: async () => {
-          const res = await fetch("https://summer-camp-server-bimol009.vercel.app/menuItem");
+          const res = await fetch("http://localhost:5000/menuItem");
    
           return res.json();
         },

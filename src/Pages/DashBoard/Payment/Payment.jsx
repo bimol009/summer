@@ -10,6 +10,8 @@ const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_Verify);
 const Payment = () => {
   const [cart] = useCart();
 
+  // console.log("cart",cart)
+
   const { id } = useParams();
   const selectedClass = cart?.find((oneCart) => oneCart._id === id);
   const price = selectedClass ? selectedClass.price : 0;
@@ -22,7 +24,7 @@ const Payment = () => {
         </Helmet>
       <SectionTitle heading={"PAYMENT"} />
       <Elements stripe={stripePromise}>
-        <CheckOutForm cart={selectedClass} price={price} id={id}></CheckOutForm>
+        <CheckOutForm cart={selectedClass} price={price}  id={id}></CheckOutForm>
       </Elements>
     </div>
   );
