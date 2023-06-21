@@ -8,6 +8,7 @@ import useAuth from "./../../hooks/useAuth";
 
 const AllClasses = () => {
   const [menu] = UseMenu();
+
   const { user } = useAuth();
   const navigate = useNavigate();
   const [enrollStatus, setEnrollStatus] = useState({});
@@ -83,8 +84,10 @@ const AllClasses = () => {
         <SectionTitle subHeading={"Classes Section"} heading={"All Class"} />
       </div>
 
+      <div>
       <div className="grid grid-cols-1 md:grid-cols-3 my-5 gap-4">
         {menu.map((ins) => (
+          
           <div
             key={ins._id}
             className={` rounded-lg shadow-md overflow-hidden ${
@@ -118,6 +121,7 @@ const AllClasses = () => {
             </div>
           </div>
         ))}
+      </div>
       </div>
     </div>
   );

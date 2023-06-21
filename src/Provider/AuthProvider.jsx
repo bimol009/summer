@@ -30,6 +30,7 @@ const githubProvider = new GithubAuthProvider();
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [darkTheme,setDarkTheme] = useState(true)
   const [loading, setLoading] = useState(true);
   const [reload, setReload] = useState(null);
 
@@ -84,7 +85,7 @@ const AuthProvider = ({ children }) => {
       // get and set token
       if (currentUser) {
         axios
-          .post("http://localhost:5000/jwt", { email: currentUser.email })
+          .post("https://summer-camp-server-livid.vercel.app/jwt", { email: currentUser.email })
 
           .then((data) => {
         
@@ -107,6 +108,8 @@ const AuthProvider = ({ children }) => {
   const authInfo = {
     user,
     loading,
+    darkTheme,
+    setDarkTheme,
     createUserEmailPass,
     showEmailVerification,
     forgotPass,

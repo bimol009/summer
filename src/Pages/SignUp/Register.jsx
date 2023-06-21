@@ -37,7 +37,7 @@ const Register = () => {
       createdProfile(data.name, data.photoURL)
         .then(() => {
           const savedUser = { name: data.name, email: data.email,photoURL: data.photoURL,role:"student" };
-          fetch("http://localhost:5000/users", {
+          fetch("https://summer-camp-server-livid.vercel.app/users", {
             method: "POST",
             headers: {
               "content-type": "application/json",

@@ -7,7 +7,8 @@ import UseMenu from "../../hooks/UseMenu";
 
 const PopularClassesSection = () => {
   const [menu] = UseMenu();
-  const { user } = useAuth();
+  const { user,darkTheme, setDarkTheme } = useAuth();
+
   const navigate = useNavigate();
   const [enrollStatus, setEnrollStatus] = useState({});
   menu?.sort((a, b) => b.enrolledStudent - a.enrolledStudent)
@@ -76,7 +77,7 @@ const PopularClassesSection = () => {
     }
   };
   return (
-    <div>
+    <div> 
       <div className="py-10">
         <SectionTitle subHeading={"Classes Section"} heading={"Popular Class"} />
       </div>
@@ -94,6 +95,7 @@ const PopularClassesSection = () => {
               src={ins.picture}
               alt="Card Image"
             />
+            <div >
             <div className="p-6">
               <h2 className="text-2xl font-bold text-gray-800 mb-4">
                 Name: {ins.name}
@@ -102,9 +104,9 @@ const PopularClassesSection = () => {
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
                 consequat erat vitae libero tristique ullamcorper.
               </p>
-              <p className="text-3xl">Category: {ins.category}</p>
-              <p className="text-3xl">Price: {ins.price}</p>
-              <p className="text-3xl">enroll: {ins.enrolledStudent}</p>
+              <p className="text-3xl text-gray-600">Category: {ins.category}</p>
+              <p className="text-3xl text-gray-600">Price: {ins.price}</p>
+              <p className="text-3xl text-gray-600">enroll: {ins.enrolledStudent}</p>
               <button
                 className="btn btn-primary my-2"
                 onClick={() => handleEnroll(ins)}
@@ -112,6 +114,7 @@ const PopularClassesSection = () => {
               >
                 {enrollStatus[ins._id] ? "Pending" : "Enroll"}
               </button>
+            </div>
             </div>
           </div>
         ))}
