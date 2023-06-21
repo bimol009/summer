@@ -110,10 +110,10 @@ const PopularClassesSection = () => {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
               consequat erat vitae libero tristique ullamcorper.
             </p>
-            <p className="text-3xl">Category: {ins.category}</p>
-            <p className="text-3xl">Price: {ins.price}</p>
-            <p className="text-3xl">seat: {ins.available_seats}</p>
-            <p className="text-3xl">enroll: {ins.enrolledStudent}</p>
+            <p className="text-3xl text-gray-600">Category: {ins.category}</p>
+            <p className="text-3xl text-gray-600">Price: {ins.price}</p>
+            <p className="text-3xl text-gray-600">seat: {ins.available_seats}</p>
+            <p className="text-3xl text-gray-600">enroll: {ins.enrolledStudent}</p>
             <button
               className="btn btn-primary my-2"
               onClick={() => handleEnroll(ins)}
