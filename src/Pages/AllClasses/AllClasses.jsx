@@ -91,7 +91,7 @@ const AllClasses = () => {
           <div
             key={ins._id}
             className={` rounded-lg shadow-md overflow-hidden ${
-              ins.available_seats === 0 ? "bg-red-500" : "bg-white"
+              ins.available_seats > 0 ? "bg-white" : "bg-red-500"
             }`}
           >
             <img

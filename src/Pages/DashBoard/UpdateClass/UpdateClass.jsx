@@ -4,7 +4,7 @@ import Swal from "sweetalert2";
 import useAuth from "../../../hooks/useAuth";
 import UseMenu from "../../../hooks/UseMenu";
 
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import SectionTitle from "../../../Components/SectionTile/SectionTitle";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { Helmet } from "react-helmet-async";
@@ -12,6 +12,7 @@ import { Helmet } from "react-helmet-async";
 const UpdateClass = () => {
   const [axiosSecure] = useAxiosSecure();
   const { user } = useAuth();
+ 
   const img_hosting_token = import.meta.env.VITE_image_token;
   const {
     register,
@@ -32,7 +33,9 @@ const UpdateClass = () => {
       .then((imgFind) => {
         if (imgFind.success) {
           const imgUrl = imgFind.data.display_url;
-          const { name, price, available_seats } = data;
+          const { name, price, available_seats,itemId } = data;
+
+          console.log("data",data)
 
           const menuChange = {
             name: name,
@@ -41,6 +44,7 @@ const UpdateClass = () => {
             email: user?.email,
             available_seats: available_seats,
             price: parseFloat(price),
+            class:itemId
           };
 
           axiosSecure.post("/menuItem", menuChange).then((data) => {

@@ -10,13 +10,15 @@ const Home = () => {
   const { darkTheme, setDarkTheme } = useAuth();
 
   return (
-    <div className={`${darkTheme ? "dark-theme" : "white-theme"}`}>
+   <div>
+     <div className={`${darkTheme ? "dark-theme" : "white-theme"}`}>
       <Banner></Banner>
       <PopularClassesSection></PopularClassesSection>
       <Instructor></Instructor>
 
       <DanceSection></DanceSection>
     </div>
+   </div>
   );
 };
 

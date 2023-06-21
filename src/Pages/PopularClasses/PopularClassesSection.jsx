@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import SectionTitle from "../../Components/SectionTile/SectionTitle";
@@ -77,49 +78,55 @@ const PopularClassesSection = () => {
     }
   };
   return (
-    <div> 
-      <div className="py-10">
-        <SectionTitle subHeading={"Classes Section"} heading={"Popular Class"} />
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-3 my-5 gap-4">
-        {menu.slice(0,6).map((ins) => (
-          <div
-            key={ins._id}
-            className={`bg-white rounded-lg shadow-md overflow-hidden ${
-              ins.available_seats === 0 ? "bg-red-500" : ""
-            }`}
-          >
-            <img
-              className="w-full h-48 object-cover object-center"
-              src={ins.picture}
-              alt="Card Image"
-            />
-            <div >
-            <div className="p-6">
-              <h2 className="text-2xl font-bold text-gray-800 mb-4">
-                Name: {ins.name}
-              </h2>
-              <p className="text-gray-600">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                consequat erat vitae libero tristique ullamcorper.
-              </p>
-              <p className="text-3xl text-gray-600">Category: {ins.category}</p>
-              <p className="text-3xl text-gray-600">Price: {ins.price}</p>
-              <p className="text-3xl text-gray-600">enroll: {ins.enrolledStudent}</p>
-              <button
-                className="btn btn-primary my-2"
-                onClick={() => handleEnroll(ins)}
-                disabled={enrollStatus[ins._id] || ins.available_seats === 0}
-              >
-                {enrollStatus[ins._id] ? "Pending" : "Enroll"}
-              </button>
-            </div>
-            </div>
-          </div>
-        ))}
-      </div>
+    <div>
+    <div className="py-10">
+      <Helmet>
+        <title>Academy of Dance | All Popular Class</title>
+        <link rel="canonical" href="https://www.tacobell.com/" />
+      </Helmet>
+      <SectionTitle subHeading={"Classes Section"} heading={"All Popular Class"} />
     </div>
+
+    <div className="px-10">
+    <div className="grid grid-cols-1 md:grid-cols-3 my-5 gap-4">
+      {menu.slice(0,6).map((ins) => (
+        
+        <div
+          key={ins._id}
+          className={` rounded-lg shadow-md overflow-hidden ${
+            ins.available_seats > 0 ? "bg-white" : "bg-red-500"
+          }`}
+        >
+          <img
+            className="w-full h-48 object-cover object-center"
+            src={ins.picture}
+            alt="Card Image"
+          />
+          <div className="p-6">
+            <h2 className="text-2xl font-bold text-gray-800 mb-4">
+              Name: {ins.name}
+            </h2>
+            <p className="text-gray-600">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+              consequat erat vitae libero tristique ullamcorper.
+            </p>
+            <p className="text-3xl">Category: {ins.category}</p>
+            <p className="text-3xl">Price: {ins.price}</p>
+            <p className="text-3xl">seat: {ins.available_seats}</p>
+            <p className="text-3xl">enroll: {ins.enrolledStudent}</p>
+            <button
+              className="btn btn-primary my-2"
+              onClick={() => handleEnroll(ins)}
+              disabled={enrollStatus[ins._id] || ins.available_seats === 0}
+            >
+              {enrollStatus[ins._id] ? "Pending" : "Enroll"}
+            </button>
+          </div>
+        </div>
+      ))}
+    </div>
+    </div>
+  </div>
   );
 };
 

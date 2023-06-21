@@ -28,7 +28,7 @@ const Instructor = () => {
         heading={"Instructor"}
       ></SectionTitle>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 my-5 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 my-5 gap-4 px-10">
         {instructor.slice(0,6).map((ins) => (
           <div key={ins._id} className="bg-white rounded-lg shadow-md overflow-hidden">
           <img className="w-full h-48 object-cover object-center" src={ins.picture} alt="Card Image" />

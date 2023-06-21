@@ -9,14 +9,14 @@ const axiosSecure = axios.create({
 });
 
 const useAxiosSecure = () => {
-  const { logOutEmail } = useAuth()
+  const { logOutEmail } = useAuth();
 
   const navigate = useNavigate();
 
   useEffect(() => {
     axiosSecure.interceptors.request.use((config) => {
       const token = localStorage.getItem("access-token");
-   
+
       if (token) {
         config.headers.Authorization = `Bearer ${token}`;
       }
@@ -25,7 +25,6 @@ const useAxiosSecure = () => {
     axiosSecure.interceptors.response.use(
       (response) => response,
       async (error) => {
-       
         if (
           error.response &&
           (error.response.status === 401 || error.response.status === 403)
