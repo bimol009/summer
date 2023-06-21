@@ -13,7 +13,7 @@ const ManageItem = () => {
   
 
   const handleAccept = (item) => {
-    fetch(`http://localhost:5000/menuItem/${item._id}`, {
+    fetch(`https://summer-camp-server-livid.vercel.app/menuItem/${item._id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -46,7 +46,7 @@ const ManageItem = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/menuItem/${item._id}`, {
+        fetch(`https://summer-camp-server-livid.vercel.app/menuItem/${item._id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
