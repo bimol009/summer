@@ -75,55 +75,62 @@ const AllClasses = () => {
   };
 
   return (
-    <div>
-      <div className="py-10">
-        <Helmet>
-          <title>Academy of Dance | All Classes</title>
-          <link rel="canonical" href="https://www.tacobell.com/" />
-        </Helmet>
-        <SectionTitle subHeading={"Classes Section"} heading={"All Class"} />
-      </div>
+    <div className="py-10">
+    <Helmet>
+      <title>Academy of Dance | All Popular Class</title>
+      <link rel="canonical" href="https://www.tacobell.com/" />
+    </Helmet>
+    <SectionTitle subHeading={'Classes Section'} heading={'All Popular Class'} />
 
-      <div>
-      <div className="grid grid-cols-1 md:grid-cols-3 my-5 gap-4">
+    <div className="px-6 md:px-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {menu.map((ins) => (
-          
           <div
             key={ins._id}
-            className={` rounded-lg shadow-md overflow-hidden ${
-              ins.available_seats > 0 ? "bg-white" : "bg-red-500"
-            }`}
+            className={`rounded-lg shadow-lg bg-white text-gray-800`}
           >
-            <img
-              className="w-full h-48 object-cover object-center"
-              src={ins.picture}
-              alt="Card Image"
-            />
-            <div className="p-6">
-              <h2 className="text-2xl font-bold text-gray-800 mb-4">
-                Name: {ins.name}
-              </h2>
-              <p className="text-gray-600">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                consequat erat vitae libero tristique ullamcorper.
+            <div className="relative">
+              <img
+                className="w-full h-56 object-cover object-center rounded-t-lg"
+                src={ins.picture}
+                alt="Card Image"
+              />
+              {!ins.available_seats && (
+                <span className="absolute top-0 right-0 p-2 text-xs font-semibold text-white bg-red-600 rounded-bl-lg">
+                  Sold Out
+                </span>
+              )}
+            </div>
+            <div className="p-4">
+              <h2 className="text-2xl font-semibold mb-2">{ins.name}</h2>
+              <p className="text-gray-600 mb-3">
+                {ins.description}
               </p>
-              <p className="text-3xl">Category: {ins.category}</p>
-              <p className="text-3xl">Price: {ins.price}</p>
-              <p className="text-3xl">seat: {ins.available_seats}</p>
-              <p className="text-3xl">enroll: {ins.enrolledStudent}</p>
-              <button
-                className="btn btn-primary my-2"
-                onClick={() => handleEnroll(ins)}
-                disabled={enrollStatus[ins._id] || ins.available_seats === 0}
-              >
-                {enrollStatus[ins._id] ? "Pending" : "Enroll"}
-              </button>
+              <div className="flex justify-between items-center mb-3">
+                <div>
+                  <p className="text-sm text-gray-600">Instructor: {ins.instructor}</p>
+                  <p className="text-sm text-gray-600">Available Seats: {ins.available_seats}</p>
+                  <p className="text-sm text-gray-600">Category: {ins.category}</p>
+                  <p className="text-sm text-gray-600">Price: ${ins.price}</p>
+                </div>
+                <button
+                  className={`px-4 py-2 rounded-full ${
+                    enrollStatus[ins._id] || ins.available_seats === 0
+                      ? 'bg-gray-300 cursor-not-allowed text-gray-600'
+                      : 'bg-purple-500 hover:bg-purple-600 text-white transform transition-transform duration-300 ease-in-out hover:scale-105'
+                  }`}
+                  onClick={() => handleEnroll(ins)}
+                  disabled={enrollStatus[ins._id] || ins.available_seats === 0}
+                >
+                  {enrollStatus[ins._id] ? 'Pending' : 'Enroll Now'}
+                </button>
+              </div>
             </div>
           </div>
         ))}
       </div>
-      </div>
     </div>
+  </div>
   );
 };
 

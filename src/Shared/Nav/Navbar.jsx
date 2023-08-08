@@ -62,10 +62,10 @@ const Navbar = () => {
           ? "dark-theme"
           : location.pathname === "/"
           ? "white-theme"
-          : "white-theme"
+          : "dark-theme"
       }`}
     >
-      <div className="navbar fixed z-10 bg-opacity-30 text-white max-w-screen-xl bg-black ">
+      <div className="navbar fixed z-10 bg-opacity-30 text-white  bg-black ">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -93,8 +93,8 @@ const Navbar = () => {
           </div>
           <Link to="/" className="flex items-center">
             <img
-              className="h-[50px] w-[50px]"
-              src="https://i.ibb.co/kDG45Zv/desktop-wallpaper-dance-high-quality-logo-of-dance-academy-background-dance-studio-removebg-preview.png"
+              className="h-[60px] w-[60px]"
+              src="https://i.ibb.co/Db9KTKD/feminin-dance-logo-727263-7-removebg-preview.png"
               alt=""
             />
             <Link className="btn btn-ghost normal-case text-xl">

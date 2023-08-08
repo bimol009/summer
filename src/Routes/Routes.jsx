@@ -8,7 +8,6 @@ import AllInstructorPage from "./../Pages/AllInstructorPage/AllInstructorPage";
 import AllClasses from "../Pages/AllClasses/AllClasses";
 import AllUsers from "../Pages/DashBoard/AllUsers/AllUsers";
 import Dashboard from "../Layout/Dashboard";
-
 import PrivateRoutes from "./PrivateRoutes/PrivateRoutes";
 import AdminRoutes from "./AdminRoutes";
 import UserHome from "../Pages/DashBoard/UserHome/UserHome";
