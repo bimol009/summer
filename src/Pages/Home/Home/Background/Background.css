@@ -1,0 +1,28 @@
+.bg {
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.2),
+        rgba(0, 0, 0, 0.4)
+      ),
+      url("https://i.ibb.co/sPYZHJx/00-color-dancing-facebook-timeline-cover-image.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 50vh;
+    background-position: center;
+    padding-top: 15rem;
+    padding-left: 10rem;
+  }
+
+
+/* 
+https://i.ibb.co/bNpLBLr/dance-facebook-cover.jpg */
+
+  .bg h2{
+    font-size: 36px;
+    font-weight: 700;
+  }
+  .bg p{
+    font-size: 18px;
+    font-weight: 400;
+  }
+  

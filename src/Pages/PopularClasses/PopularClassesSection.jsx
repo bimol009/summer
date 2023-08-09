@@ -80,7 +80,7 @@ const PopularClassesSection = () => {
     }
   };
   return (
-    <div className="py-10">
+    <div className="py-10 ">
       <Helmet>
         <title>Academy of Dance | All Popular Class</title>
         <link rel="canonical" href="https://www.tacobell.com/" />

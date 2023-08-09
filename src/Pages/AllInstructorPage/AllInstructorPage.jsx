@@ -28,10 +28,10 @@ const AllInstructorPage = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 my-5 gap-4">
           {instructor.map((ins) => (
          <div key={ins._id} className="bg-white rounded-lg shadow-md overflow-hidden">
-         <img className="w-full h-48 object-cover object-center" src={ins.picture} alt="Card Image" />
+         <img className="w-full h-56 object-cover object-center" src={ins.picture} alt="Card Image" />
          <div className="p-6">
            <h2 className="text-2xl font-bold text-gray-800 mb-4">{ins.name}</h2>
-           <p className="text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed consequat erat vitae libero tristique ullamcorper.</p>
+           <p className="text-gray-600">Dance as if nobody is watching. Enjoy each step along the way that takes you into the unknown space.  Let go and allow your life play out its dance on the edge of time like dew drops on the tip of a leaf…melt into the moment that is available!</p>
            
          </div>
        </div>

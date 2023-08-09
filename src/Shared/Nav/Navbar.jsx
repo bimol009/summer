@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { set } from "react-hook-form";
-import { FaShoppingCart } from "react-icons/fa";
+import { FaMoon, FaShoppingCart, FaSun } from "react-icons/fa";
 import { Link, useLocation } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
 
@@ -105,19 +105,19 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navOptions}</ul>
         </div>
-        <div>
+      
+        <div className="navbar-end">
+          <a className="btn btn-square btn-outline text-white">  <div>
           {location.pathname === "/" && (
             <button
               onClick={() => {
                 setDarkTheme((theme) => !theme);
               }}
             >
-              {darkTheme ? "dark" : "white"}
+              {darkTheme ? <h1 className="text-3xl"><FaSun/></h1> : <h1 className="text-3xl"><FaMoon/></h1>}
             </button>
           )}
-        </div>
-        <div className="navbar-end">
-          <a className="btn">Dance</a>
+        </div></a>
         </div>
       </div>
     </div>
