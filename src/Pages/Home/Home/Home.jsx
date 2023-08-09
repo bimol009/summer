@@ -7,6 +7,7 @@ import Banner from "../Banner/Banner";
 import ImgContentPart from "../imageContent/ImgContentPart";
 import Instructor from "./../Instructor/Instructor";
 import Background from "./Background/Background";
+import DanceThumb from "./DanceThumb/DanceThumb";
 import ImgarSweper from "./Sweper/ImgarSweper";
 
 const Home = () => {
@@ -21,6 +22,7 @@ const Home = () => {
       <ImgContentPart></ImgContentPart>
       <ImgarSweper></ImgarSweper>
       <Background></Background>
+      <DanceThumb></DanceThumb>
       <DanceSection></DanceSection>
     </div>
    </div>
