@@ -50,7 +50,7 @@ const DanceSection = () => {
             <div className="p-4">
               <h2 className="text-xl font-semibold mb-2">{bt.name}</h2>
               <p className="text-gray-700">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Canvas metri essar. Incubator ramen viral product management drect mailing. such founders
               </p>
             </div>
           </div>

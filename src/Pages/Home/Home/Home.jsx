@@ -9,6 +9,7 @@ import Instructor from "./../Instructor/Instructor";
 import Background from "./Background/Background";
 import DanceThumb from "./DanceThumb/DanceThumb";
 import ImgarSweper from "./Sweper/ImgarSweper";
+import TestimonialSection from "./TestimonialSection/TestimonialSection";
 
 const Home = () => {
   const { darkTheme, setDarkTheme } = useAuth();
@@ -24,6 +25,7 @@ const Home = () => {
       <Background></Background>
       <DanceThumb></DanceThumb>
       <DanceSection></DanceSection>
+      <TestimonialSection></TestimonialSection>
     </div>
    </div>
   );

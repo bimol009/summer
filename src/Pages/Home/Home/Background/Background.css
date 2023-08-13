@@ -4,10 +4,11 @@
         rgba(0, 0, 0, 0.2),
         rgba(0, 0, 0, 0.4)
       ),
-      url("https://i.ibb.co/sPYZHJx/00-color-dancing-facebook-timeline-cover-image.jpg");
+      url("https://i.ibb.co/VHbF7NN/Yellow-Bright-Business-Idea-Tutorial-Youtube-Thumbnail.png");
     background-size: cover;
     background-repeat: no-repeat;
-    min-height: 50vh;
+    height: 100%;
+    width: 100%;
     background-position: center;
     padding-top: 15rem;
     padding-left: 10rem;
