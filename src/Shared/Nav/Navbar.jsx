@@ -65,7 +65,7 @@ const Navbar = () => {
           : "dark-theme"
       }`}
     >
-      <div className="navbar fixed z-10 bg-opacity-30 pl-5 pr-5 text-white  bg-black ">
+      <div className="navbar fixed z-10 bg-opacity-30 pl-5 pr-5 text-white bg-black ">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -88,6 +88,7 @@ const Navbar = () => {
               tabIndex={0}
               className="menu text-black menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
+              
               {navOptions}
             </ul>
           </div>
