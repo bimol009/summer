@@ -8,8 +8,8 @@ const Background = () => {
     <section>
       <SectionTitle heading={"Dance Step"}></SectionTitle>
       <div className="bg-black bg text-white py-20 bg-fixed">
-        <div className="container mx-auto flex flex-col md:flex-row items-center my-12 md:my-24">
-          <div className="flex flex-col w-full lg:w-1/3 justify-center items-start p-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 items-center my-12 md:my-24">
+          <div className=" w-full justify-center items-start p-8">
             <h1 className="text-3xl md:text-5xl p-2 text-yellow-300 tracking-loose">
               TechFest
             </h1>
@@ -27,16 +27,16 @@ const Background = () => {
               Explore Now
             </a>
           </div>
-          <div className="p-8 mt-12 mb-6 md:mb-0 md:mt-0 ml-0 md:ml-12 lg:w-2/3  justify-center">
-            <div className="h-48 flex flex-wrap content-center">
+      
+            <div className=" content-center">
               <div>
                 <img
-                  className="inline-block mt-24 md:mt-0 p-8 md:p-0"
+                
                   src="https://i.ibb.co/PtFQVq2/Blue-Orange-New-casual-style-collection-Instagram-Post-removebg-preview.png"
                 />
               </div>
             </div>
-          </div>
+
         </div>
       </div>
     </section>

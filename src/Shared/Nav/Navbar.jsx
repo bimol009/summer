@@ -65,7 +65,7 @@ const Navbar = () => {
           : "dark-theme"
       }`}
     >
-      <div className="navbar fixed z-10 bg-opacity-30 text-white  bg-black ">
+      <div className="navbar fixed z-10 bg-opacity-30 pl-5 pr-5 text-white  bg-black ">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -97,8 +97,8 @@ const Navbar = () => {
               src="https://i.ibb.co/Db9KTKD/feminin-dance-logo-727263-7-removebg-preview.png"
               alt=""
             />
-            <Link className="btn btn-ghost normal-case text-xl">
-              Academy Of Dance
+            <Link className="btn btn-ghost hidden lg:flex normal-case text-xl">
+              Dance Academy
             </Link>
           </Link>
         </div>

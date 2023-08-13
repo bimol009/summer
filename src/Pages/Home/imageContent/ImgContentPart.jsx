@@ -26,8 +26,8 @@ const ImgContentPart = () => {
             incubator. Release user experience beta. Backing monetization
             paradigm shift client.
           </p>
-          <div className="grid grid-cols-2 gap-4 mt-4">
-            <div className="image-work flex justify-items-center align-items-center">
+          <div className="grid grid-cols-2 gap-4 mt-4 justify-items-center align-items-center">
+            <div className="image-work justify-items-center align-items-center">
               <img
                 src="https://i.ibb.co/QjGfzQZ/Untitled-design-3.png"
                 alt=""
@@ -40,7 +40,7 @@ const ImgContentPart = () => {
                 </p>
               </div>
             </div>
-            <div className="image-work flex justify-items-center align-items-center">
+            <div className="image-work  justify-items-center align-items-center">
               <img
                 src="https://i.ibb.co/qgNF1TC/Untitled-design-2.png"
                 alt=""
@@ -53,7 +53,7 @@ const ImgContentPart = () => {
                 </p>
               </div>
             </div>
-            <div className="image-work flex justify-items-center align-items-center">
+            <div className="image-work  justify-items-center align-items-center">
               <img
                 src="https://i.ibb.co/qMRt00q/Untitled-design-1.png"
                 alt=""
@@ -66,7 +66,7 @@ const ImgContentPart = () => {
                 </p>
               </div>
             </div>
-            <div className="image-work flex justify-items-center align-items-center">
+            <div className="image-work  justify-items-center align-items-center">
               <img src="https://i.ibb.co/x2rGFp0/Untitled-design.png" alt="" />
               <div className="img-content">
                 <h2 className="text-3xl font-bold mb-2">Dance Masters</h2>
