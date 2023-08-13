@@ -29,7 +29,7 @@ const AllInstructorPage = () => {
           {instructor.map((ins) => (
          <div key={ins._id} className="bg-white rounded-lg shadow-md overflow-hidden">
          <img className="w-full h-56 object-cover object-center" src={ins.picture} alt="Card Image" />
-         <div className="p-6">
+         <div className="p-4">
            <h2 className="text-2xl font-bold text-gray-800 mb-4">{ins.name}</h2>
            <p className="text-gray-600">Dance as if nobody is watching. Enjoy each step along the way that takes you into the unknown space.  Let go and allow your life play out its dance on the edge of time like dew drops on the tip of a leaf…melt into the moment that is available!</p>
            
